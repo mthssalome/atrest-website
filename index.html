@@ -1,0 +1,762 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atrest — A Quiet, Premium Fasting App for Serious Fasters</title>
+    <meta name="description" content="Atrest is a beautifully crafted fasting app designed for people who value calm, continuity, and meaning. A quiet companion for serious fasting — where discipline becomes memory.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+      @font-face {
+          font-family: 'SF Pro Display';
+          src: local('-apple-system'), local('BlinkMacSystemFont');
+          font-weight: 100 900;
+      }
+      @font-face {
+          font-family: 'SF Pro Text';
+          src: local('-apple-system'), local('BlinkMacSystemFont');
+          font-weight: 100 900;
+      }
+
+      :root {
+          --font-sans: 'SF Pro Text', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          --font-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      body {
+          font-family: var(--font-sans);
+          background-color: #1A1410;
+      }
+
+      h1, h2, h3, h4, h5, h6, .font-display {
+          font-family: var(--font-display);
+      }
+
+      /* Hide scrollbar for clean aesthetic */
+      ::-webkit-scrollbar {
+          width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+          background: #1A1410;
+      }
+      ::-webkit-scrollbar-thumb {
+          background: #221C18;
+          border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+          background: #332B25;
+      }
+
+      /* Subtle animations */
+      @keyframes subtleFadeUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes slowPulse {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.6; }
+      }
+
+      .animate-fade-up {
+          animation: subtleFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          opacity: 0;
+      }
+
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+      .delay-500 { animation-delay: 500ms; }
+
+      .glow-effect {
+          position: absolute;
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(circle, rgba(200, 168, 120, 0.08) 0%, rgba(26, 20, 16, 0) 70%);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
+      }
+
+      /* Custom details/summary for FAQ */
+      details > summary {
+          list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+          display: none;
+      }
+      details[open] summary ~ div {
+          animation: subtleFadeUp 0.4s ease-out forwards;
+      }
+      details[open] summary .icon-toggle {
+          transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body class="bg-[#1A1410] text-[#F5F1EB] antialiased selection:bg-[#E2B97A]/20 selection:text-[#F5F1EB] overflow-x-hidden relative">
+    <!-- Global ambient glow -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-[#C8A878] opacity-[0.03] blur-[120px] pointer-events-none rounded-full z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-[#1A1410]/70 backdrop-blur-xl border-b border-[#C8A878]/5 transition-all duration-500">
+      <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="#" class="font-display text-lg tracking-widest font-normal text-[#F5F1EB] hover:text-[#E2B97A] transition-colors duration-300">
+          ATREST
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#philosophy" class="text-sm font-light text-[#C7C1BA] hover:text-[#F5F1EB] transition-colors duration-300">
+            Philosophy
+          </a>
+          <a href="#experience" class="text-sm font-light text-[#C7C1BA] hover:text-[#F5F1EB] transition-colors duration-300">
+            Experience
+          </a>
+          <a href="#pricing" class="text-sm font-light text-[#C7C1BA] hover:text-[#F5F1EB] transition-colors duration-300">
+            Access
+          </a>
+        </div>
+        <a href="#early-access" class="group relative px-5 py-2.5 rounded-full overflow-hidden">
+          <div class="absolute inset-0 bg-[#221C18] border border-[#C8A878]/10 rounded-full transition-colors duration-300 group-hover:border-[#C8A878]/30 group-hover:bg-[#2A231E]"></div>
+          <span class="relative text-xs font-normal text-[#E2B97A] group-hover:text-[#F5F1EB] transition-colors duration-300 tracking-wide">
+            Early Access
+          </span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <!-- Abstract Forest Background -->
+      <div class="absolute inset-0 z-0 opacity-40">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&amp;w=2560&amp;auto=format&amp;fit=crop" alt="Misty Forest" class="w-full h-full object-cover object-center scale-105" style="animation: scaleIn 30s linear infinite alternate;">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1410] via-[#1A1410]/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#1A1410] via-transparent to-transparent opacity-80"></div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-[#F5F1EB] leading-[1.1] animate-fade-up max-w-4xl drop-shadow-2xl">
+          A quiet companion
+          <br class="hidden md:block">
+          for serious fasting.
+        </h1>
+        <p class="mt-8 text-lg md:text-xl font-light text-[#C7C1BA] max-w-2xl leading-relaxed tracking-wide animate-fade-up delay-100">
+          Where discipline becomes memory. A beautifully crafted fasting app for
+          people who value calm, continuity, and meaning.
+        </p>
+
+        <div class="mt-12 flex flex-col sm:flex-row items-center gap-6 animate-fade-up delay-200">
+          <a href="#early-access" class="w-full sm:w-auto px-8 py-4 bg-[#F5F1EB] text-[#1A1410] rounded-full text-sm font-normal tracking-wide hover:bg-[#E2B97A] transition-all duration-500 shadow-[0_0_40px_-10px_rgba(226,185,122,0.3)] flex items-center justify-center gap-2">
+            <iconify-icon icon="solar:apple-outline" class="text-lg"></iconify-icon>
+            Download on the App Store
+          </a>
+          <a href="#early-access" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-[#C8A878]/20 text-[#E2B97A] rounded-full text-sm font-normal tracking-wide hover:bg-[#221C18] hover:border-[#C8A878]/40 transition-all duration-500 flex items-center justify-center">
+            Join Early Access
+            <span class="ml-2 text-xs opacity-60">(50% Lifetime)</span>
+          </a>
+        </div>
+
+        <!-- Device Mockup Abstraction -->
+        <div class="mt-24 relative w-full max-w-[320px] aspect-[1/2.1] rounded-[2.5rem] bg-[#221C18] border border-[#C8A878]/10 shadow-2xl p-4 animate-fade-up delay-300 overflow-hidden transform perspective-1000 rotate-x-12">
+          <!-- Screen content abstraction -->
+          <div class="w-full h-full rounded-[2rem] bg-[#1A1410] border border-[#C8A878]/5 overflow-hidden relative">
+            <!-- Subtle top gradient -->
+            <div class="absolute top-0 w-full h-32 bg-gradient-to-b from-[#C8A878]/10 to-transparent"></div>
+
+            <!-- App UI elements -->
+            <div class="absolute top-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
+              <div class="w-1 h-12 bg-gradient-to-b from-transparent via-[#E2B97A]/40 to-transparent"></div>
+              <div class="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#E2B97A]/20 to-transparent mt-4"></div>
+              <p class="font-display text-2xl tracking-tight text-[#F5F1EB] mt-8 font-light">
+                16:00
+              </p>
+              <p class="text-xs font-light text-[#C7C1BA] mt-2 tracking-widest uppercase">
+                Fasting
+              </p>
+            </div>
+
+            <!-- Ambient landscape representation -->
+            <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-[#221C18] to-transparent flex items-end justify-center pb-8">
+              <div class="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#C8A878]/20 to-transparent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-32 md:py-48 relative z-10">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="font-display text-2xl md:text-4xl font-light leading-relaxed tracking-tight text-[#F5F1EB] md:leading-[1.4]">
+          <span class="text-[#C7C1BA]">Fasting is not a performance.</span>
+          <br>
+          <span class="text-[#C7C1BA]">It’s a practice.</span>
+          <br>
+          <br>
+          Atrest gives your discipline a place to live —
+          <br class="hidden md:block">
+          quietly, beautifully, and without noise.
+        </p>
+      </div>
+    </section>
+
+    <!-- UI Showcase -->
+    <section id="experience" class="py-24 relative z-10">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center">
+          <!-- Block 1 -->
+          <div class="order-2 md:order-1">
+            <h3 class="font-display text-2xl md:text-3xl font-light tracking-tight text-[#F5F1EB]">
+              A forest that remembers.
+            </h3>
+            <p class="mt-6 text-base font-light text-[#C7C1BA] leading-relaxed">
+              Your fasting history becomes a living landscape — calm,
+              deterministic, and deeply personal. Watch your discipline slowly
+              shape the environment without the pressure of metrics.
+            </p>
+          </div>
+          <div class="order-1 md:order-2 aspect-square rounded-3xl bg-[#221C18] border border-[#C8A878]/5 p-8 flex items-center justify-center relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#C8A878]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            <!-- Abstract forest visual -->
+            <div class="relative w-48 h-48 rounded-full border border-[#C8A878]/10 flex items-center justify-center">
+              <div class="w-32 h-32 rounded-full border border-[#C8A878]/20 flex items-center justify-center">
+                <div class="w-16 h-16 rounded-full bg-[#E2B97A]/5 blur-xl"></div>
+              </div>
+              <div class="absolute bottom-0 w-[1px] h-24 bg-gradient-to-t from-transparent via-[#C8A878]/30 to-transparent"></div>
+            </div>
+          </div>
+
+          <!-- Block 2 -->
+          <div class="aspect-[4/3] rounded-3xl bg-[#221C18] border border-[#C8A878]/5 p-8 flex items-center justify-center relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#1A1410] to-[#221C18]"></div>
+            <div class="relative z-10 flex flex-col items-center gap-4">
+              <iconify-icon icon="solar:check-read-linear" class="text-4xl text-[#E2B97A]/40"></iconify-icon>
+              <div class="w-16 h-[1px] bg-[#C8A878]/10"></div>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-display text-2xl md:text-3xl font-light tracking-tight text-[#F5F1EB]">
+              Completion without noise.
+            </h3>
+            <p class="mt-6 text-base font-light text-[#C7C1BA] leading-relaxed">
+              No streaks. No badges. No dopamine engineering. Just a quiet
+              moment that belongs entirely to you when a fast is completed.
+            </p>
+          </div>
+
+          <!-- Block 3 -->
+          <div class="order-2 md:order-1">
+            <h3 class="font-display text-2xl md:text-3xl font-light tracking-tight text-[#F5F1EB]">
+              Designed for clarity.
+            </h3>
+            <p class="mt-6 text-base font-light text-[#C7C1BA] leading-relaxed">
+              Clean typography, gentle motion, and a premium experience. Every
+              interaction is designed to feel like a slow, intentional breath.
+            </p>
+          </div>
+          <div class="order-1 md:order-2 aspect-[4/3] rounded-3xl bg-[#221C18] border border-[#C8A878]/5 p-8 flex flex-col justify-between relative overflow-hidden">
+            <div class="w-full space-y-4">
+              <div class="h-4 w-1/3 bg-[#1A1410] rounded border border-[#C8A878]/5"></div>
+              <div class="h-4 w-1/2 bg-[#1A1410] rounded border border-[#C8A878]/5"></div>
+            </div>
+            <div class="w-full flex justify-end">
+              <div class="h-10 w-10 rounded-full border border-[#E2B97A]/20 flex items-center justify-center">
+                <div class="w-2 h-2 rounded-full bg-[#E2B97A]/40"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vigil Mode -->
+    <section class="py-32 relative z-10">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="rounded-[2.5rem] bg-[#221C18]/80 backdrop-blur-sm border border-[#C8A878]/10 p-10 md:p-16 relative overflow-hidden text-center flex flex-col items-center">
+          <div class="absolute inset-0 bg-gradient-to-b from-[#E2B97A]/[0.02] to-transparent pointer-events-none"></div>
+
+          <iconify-icon icon="solar:flame-linear" class="text-3xl text-[#E2B97A]/60 mb-8"></iconify-icon>
+
+          <h3 class="font-display text-2xl md:text-3xl font-light tracking-tight text-[#F5F1EB]">
+            Vigil Mode
+          </h3>
+          <p class="mt-6 text-base font-light text-[#C7C1BA] max-w-2xl leading-relaxed">
+            For those who fast during Lent, Advent, the Apostles’ Fast, or other
+            sacred periods — Vigil Mode offers quiet scriptural reflections
+            without altering the core minimalist experience.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 relative z-10 border-t border-[#C8A878]/5">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="font-display text-3xl md:text-4xl font-light tracking-tight text-[#F5F1EB]">
+            Early Access — 50% Lifetime
+          </h2>
+          <p class="mt-4 text-sm font-light text-[#C7C1BA]">
+            A limited batch for our earliest supporters.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Monthly -->
+          <div class="rounded-3xl bg-[#221C18]/50 border border-[#C8A878]/5 p-8 flex flex-col">
+            <h4 class="text-sm font-normal text-[#C7C1BA] tracking-wide">
+              Monthly
+            </h4>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="font-display text-3xl font-light text-[#F5F1EB]">
+                $4.99
+              </span>
+              <span class="text-xs text-[#C7C1BA]/60">/mo</span>
+            </div>
+            <ul class="mt-8 flex-1 space-y-4">
+              <li class="flex items-start gap-3 text-sm text-[#C7C1BA] font-light">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A]/50 mt-0.5"></iconify-icon>
+                Full aesthetic tracker
+              </li>
+              <li class="flex items-start gap-3 text-sm text-[#C7C1BA] font-light">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A]/50 mt-0.5"></iconify-icon>
+                Vigil Mode access
+              </li>
+            </ul>
+          </div>
+
+          <!-- Lifetime (Highlighted) -->
+          <div class="rounded-3xl bg-[#2A231E] border border-[#E2B97A]/20 p-8 flex flex-col relative transform md:-translate-y-4 shadow-2xl shadow-[#E2B97A]/5">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#E2B97A]/10 border border-[#E2B97A]/30 text-[#E2B97A] text-[10px] uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md">
+              Early Bird
+            </div>
+            <h4 class="text-sm font-normal text-[#E2B97A] tracking-wide">
+              Lifetime Access
+            </h4>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="font-display text-4xl font-light text-[#F5F1EB]">
+                $49.99
+              </span>
+              <span class="text-xs text-[#C7C1BA]/60 line-through">$99.99</span>
+            </div>
+            <p class="mt-2 text-xs text-[#C7C1BA]/80 font-light">
+              Pay once. Fast forever.
+            </p>
+            <ul class="mt-8 flex-1 space-y-4">
+              <li class="flex items-start gap-3 text-sm text-[#F5F1EB] font-light">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A] mt-0.5"></iconify-icon>
+                All current features
+              </li>
+              <li class="flex items-start gap-3 text-sm text-[#F5F1EB] font-light">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A] mt-0.5"></iconify-icon>
+                All future updates included
+              </li>
+              <li class="flex items-start gap-3 text-sm text-[#F5F1EB] font-light">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A] mt-0.5"></iconify-icon>
+                Support independent design
+              </li>
+            </ul>
+          </div>
+
+          <!-- Annual -->
+          <div class="rounded-3xl bg-[#221C18]/50 border border-[#C8A878]/5 p-8 flex flex-col">
+            <h4 class="text-sm font-normal text-[#C7C1BA] tracking-wide">
+              Annual
+            </h4>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="font-display text-3xl font-light text-[#F5F1EB]">
+                $39.99
+              </span>
+              <span class="text-xs text-[#C7C1BA]/60">/yr</span>
+            </div>
+            <ul class="mt-8 flex-1 space-y-4">
+              <li class="flex items-start gap-3 text-sm text-[#C7C1BA] font-light">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A]/50 mt-0.5"></iconify-icon>
+                2 months free
+              </li>
+              <li class="flex items-start gap-3 text-sm text-[#C7C1BA] font-light">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A]/50 mt-0.5"></iconify-icon>
+                Full experience
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Email Capture Section (Ethical) -->
+    <section id="early-access" class="py-32 relative z-10">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <h2 class="font-display text-3xl md:text-4xl font-light tracking-tight text-[#F5F1EB]">
+          Join the early access list.
+        </h2>
+        <p class="mt-6 text-base font-light text-[#C7C1BA] leading-relaxed">
+          Members of this list receive a 50% Lifetime Access discount when
+          Atrest launches.
+          <br>
+          No pressure. No commitments. Just an invitation.
+        </p>
+
+        <form class="mt-12 w-full max-w-md mx-auto" onsubmit="event.preventDefault();">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input type="email" placeholder="Enter your email" required="" class="flex-1 bg-[#221C18] border border-[#C8A878]/10 focus:border-[#E2B97A]/40 outline-none text-[#F5F1EB] text-sm font-light rounded-2xl px-6 py-4 placeholder:text-[#C7C1BA]/40 transition-colors duration-300">
+            <button type="submit" class="bg-[#2A231E] hover:bg-[#332B25] text-[#E2B97A] border border-[#E2B97A]/20 hover:border-[#E2B97A]/40 rounded-2xl px-8 py-4 text-sm font-normal tracking-wide transition-all duration-300 whitespace-nowrap">
+              Get Early Access
+            </button>
+          </div>
+          <p class="mt-4 text-xs font-light text-[#C7C1BA]/50 text-left px-2">
+            You’ll receive the discount link by email. You can unsubscribe at
+            any time.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 relative z-10 border-t border-[#C8A878]/5">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="font-display text-2xl font-light tracking-tight text-[#F5F1EB] mb-12 text-center">
+          Questions &amp; Philosophy
+        </h2>
+
+        <div class="space-y-2">
+          <!-- FAQ Item 1 -->
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
+            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
+              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
+                What makes Atrest different from other fasting apps?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
+              Atrest is designed for serious fasting, not motivation. It avoids
+              streaks, badges, and gamification. Instead, it offers a quiet,
+              premium environment where your discipline becomes a living memory
+              in the form of a forest.
+            </div>
+          </details>
+
+          <!-- FAQ Item 2 -->
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
+            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
+              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
+                Is this app for Christians only?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
+              No. Atrest is for anyone who takes fasting seriously and prefers a
+              calm, aesthetic experience. Some features, like Vigil Mode, are
+              designed for people who fast during specific sacred periods, but
+              the core app is neutral and non-religious.
+            </div>
+          </details>
+
+          <!-- FAQ Item 3 -->
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
+            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
+              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
+                Does the forest gamify fasting?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
+              No. The forest is a visual record of continuity, not a game. There
+              are no rewards, points, or streak mechanics. The forest grows as a
+              quiet reflection of your practice, not as a way to pressure you.
+            </div>
+          </details>
+
+          <!-- FAQ Item 4 -->
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
+            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
+              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
+                How does Vigil Mode work?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
+              Vigil Mode is an optional layer for people who fast during periods
+              like Lent, Advent, or the Apostles’ Fast. It adds quiet scriptural
+              reflections without changing the core tracking experience. It is
+              completely optional and can be turned off at any time.
+            </div>
+          </details>
+
+          <!-- FAQ Item 5 -->
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
+            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
+              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
+                Is my data private?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
+              Yes. Atrest is designed with privacy in mind. Your fasting history
+              is stored securely and is never sold. Only the minimum necessary
+              data is collected to provide the core experience.
+            </div>
+          </details>
+
+          <!-- FAQ Item 6 -->
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
+            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
+              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
+                Will Atrest stay quiet and minimal?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
+              Yes. Atrest is built on a clear doctrine: no noise, no
+              gamification, no motivational tricks. The product will remain
+              quiet, serious, and aesthetic as it evolves.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section id="terms-view" class="hidden py-32 relative z-10 min-h-screen">
+      <div class="max-w-3xl mx-auto px-6">
+        <h1 class="font-display text-3xl md:text-4xl font-light tracking-tight text-[#F5F1EB] mb-12">
+          Terms of Use — Atrest
+        </h1>
+        <div class="space-y-8 text-[#C7C1BA] font-light text-sm leading-relaxed">
+          <div>
+            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
+              Introduction
+            </h2>
+            <p>
+              Welcome to Atrest. By accessing or using our app, you agree to be
+              bound by these Terms of Use. If you do not agree to these terms,
+              please do not use Atrest.
+            </p>
+          </div>
+          <div>
+            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
+              Use of the App
+            </h2>
+            <p>
+              Atrest is a minimal fasting tracker designed for personal use. It
+              is not intended to provide medical advice, diagnosis, or
+              treatment. Always consult with a healthcare professional before
+              making any significant changes to your diet or fasting habits.
+            </p>
+          </div>
+          <div>
+            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
+              Limitations
+            </h2>
+            <p>
+              We provide Atrest on an "as is" and "as available" basis. We do
+              not guarantee that the app will be completely uninterrupted or
+              error-free. We reserve the right to modify or discontinue the app
+              at any time without notice.
+            </p>
+          </div>
+          <div>
+            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
+              User Responsibilities
+            </h2>
+            <p>
+              You are solely responsible for your use of Atrest. You agree to
+              use the app respectfully and in compliance with all applicable
+              local, state, and federal laws.
+            </p>
+          </div>
+          <div>
+            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
+              Contact Information
+            </h2>
+            <p>
+              If you have any questions about these Terms, please contact us at
+              <a href="mailto:support@atrest.com" class="text-[#E2B97A] hover:text-[#F5F1EB] transition-colors">
+                support@atrest.com
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy-view" class="hidden py-32 relative z-10 min-h-screen">
+      <div class="max-w-3xl mx-auto px-6">
+        <h1 class="font-display text-3xl md:text-4xl font-light tracking-tight text-[#F5F1EB] mb-12">
+          Privacy Policy — Atrest
+        </h1>
+        <div class="space-y-8 text-[#C7C1BA] font-light text-sm leading-relaxed">
+          <div>
+            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
+              Data We Collect
+            </h2>
+            <p>
+              Atrest is built with absolute privacy at its core. We collect only
+              the minimum amount of data necessary to provide the core fasting
+              experience. Your fasting history is securely stored on your device
+              and synced via native Apple iCloud architecture.
+            </p>
+          </div>
+          <div>
+            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
+              How We Use Data
+            </h2>
+            <p>
+              The minimal data we handle is used strictly to operate and improve
+              Atrest. We do not sell your data, we do not run third-party
+              advertisements, and we cannot read or access your personal fasting
+              history.
+            </p>
+          </div>
+          <div>
+            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
+              Your Rights
+            </h2>
+            <p>
+              You retain full control over your personal data. You can delete
+              your fasting history at any time directly within the app, which
+              will permanently remove it from your device and your connected
+              iCloud account.
+            </p>
+          </div>
+          <div>
+            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
+              Data Retention
+            </h2>
+            <p>
+              We only retain data for as long as you use the application. If you
+              choose to delete your data or your account, it is immediately and
+              permanently removed from our active operations.
+            </p>
+          </div>
+          <div>
+            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
+              Contact Information
+            </h2>
+            <p>
+              If you have any privacy-related questions or concerns, please
+              reach out to us at
+              <a href="mailto:support@atrest.com" class="text-[#E2B97A] hover:text-[#F5F1EB] transition-colors">
+                support@atrest.com
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="py-12 border-t border-[#C8A878]/5 relative z-10 bg-[#1A1410]">
+      <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <span class="font-display text-sm tracking-widest font-normal text-[#F5F1EB]">
+            ATREST
+          </span>
+          <span class="text-[#C7C1BA]/30 text-xs">|</span>
+          <span class="text-xs font-light text-[#C7C1BA]">
+            Discipline without noise.
+          </span>
+        </div>
+
+        <div class="flex gap-8">
+          <a href="#" class="text-xs font-light text-[#C7C1BA] hover:text-[#E2B97A] transition-colors duration-300">
+            Twitter / X
+          </a>
+          <a href="mailto:support@atrest.com" class="text-xs font-light text-[#C7C1BA] hover:text-[#E2B97A] transition-colors duration-300">
+            Contact
+          </a>
+          <a href="/privacy.html" class="text-xs font-light text-[#C7C1BA] hover:text-[#E2B97A] transition-colors duration-300">
+            Privacy Policy
+          </a>
+          <a href="/terms.html" class="text-xs font-light text-[#C7C1BA] hover:text-[#E2B97A] transition-colors duration-300">
+            Terms of Use
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+      // Smooth scroll handling for internal links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const target = document.querySelector(this.getAttribute('href'));
+              if (target) {
+                  target.scrollIntoView({
+                      behavior: 'smooth'
+                  });
+              }
+          });
+      });
+
+      // Close other FAQ details when one is opened for a cleaner accordion effect
+      const details = document.querySelectorAll('details');
+      details.forEach(targetDetail => {
+          targetDetail.addEventListener('click', () => {
+              details.forEach(detail => {
+                  if (detail !== targetDetail) {
+                      detail.removeAttribute('open');
+                  }
+              });
+          });
+      });
+
+      // Subtle parallax effect on scroll for abstract elements
+      window.addEventListener('scroll', () => {
+          const scrolled = window.scrollY;
+          const glow = document.querySelector('.fixed.top-0');
+          if(glow) {
+              glow.style.transform = `translate(-50%, ${scrolled * 0.1}px)`;
+              glow.style.opacity = Math.max(0, 0.03 - (scrolled * 0.00005));
+          }
+      });
+    </script>
+
+    <script>
+      (function() {
+          const mainSections = document.querySelectorAll('body > section:not(#terms-view):not(#privacy-view)');
+          const termsView = document.getElementById('terms-view');
+          const privacyView = document.getElementById('privacy-view');
+
+          function showView(view) {
+              if (view === 'home') {
+                  mainSections.forEach(s => s.classList.remove('hidden'));
+                  if(termsView) termsView.classList.add('hidden');
+                  if(privacyView) privacyView.classList.add('hidden');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else if (view === 'terms') {
+                  mainSections.forEach(s => s.classList.add('hidden'));
+                  if(termsView) termsView.classList.remove('hidden');
+                  if(privacyView) privacyView.classList.add('hidden');
+                  window.scrollTo({ top: 0, behavior: 'instant' });
+              } else if (view === 'privacy') {
+                  mainSections.forEach(s => s.classList.add('hidden'));
+                  if(termsView) termsView.classList.add('hidden');
+                  if(privacyView) privacyView.classList.remove('hidden');
+                  window.scrollTo({ top: 0, behavior: 'instant' });
+              }
+          }
+
+          document.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', (e) => {
+                  const href = link.getAttribute('href');
+                  if (href === '/terms.html') {
+                      e.preventDefault();
+                      showView('terms');
+                  } else if (href === '/privacy.html') {
+                      e.preventDefault();
+                      showView('privacy');
+                  }
+              });
+          });
+
+          const brandLogo = document.querySelector('nav a.font-display');
+          if (brandLogo) {
+              brandLogo.addEventListener('click', (e) => {
+                  if(brandLogo.getAttribute('href') === '#') {
+                      showView('home');
+                  }
+              });
+          }
+      })();
+    </script>
+  
+</body></html>
