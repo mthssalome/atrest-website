@@ -394,17 +394,19 @@
           No pressure. No commitments. Just an invitation.
         </p>
 
-        <form class="mt-12 w-full max-w-md mx-auto" onsubmit="event.preventDefault();">
+        <form id="early-access-form" class="mt-12 w-full max-w-md mx-auto">
           <div class="flex flex-col sm:flex-row gap-3">
-            <input type="email" placeholder="Enter your email" required="" class="flex-1 bg-[#221C18] border border-[#C8A878]/10 focus:border-[#E2B97A]/40 outline-none text-[#F5F1EB] text-sm font-light rounded-2xl px-6 py-4 placeholder:text-[#C7C1BA]/40 transition-colors duration-300">
-            <button type="submit" class="bg-[#2A231E] hover:bg-[#332B25] text-[#E2B97A] border border-[#E2B97A]/20 hover:border-[#E2B97A]/40 rounded-2xl px-8 py-4 text-sm font-normal tracking-wide transition-all duration-300 whitespace-nowrap">
+            <input id="early-access-email" type="email" placeholder="Enter your email" required="" class="flex-1 bg-[#221C18] border border-[#C8A878]/10 focus:border-[#E2B97A]/40 outline-none text-[#F5F1EB] text-sm font-light rounded-2xl px-6 py-4 placeholder:text-[#C7C1BA]/40 transition-colors duration-300">
+            <button id="early-access-btn" type="submit" class="bg-[#2A231E] hover:bg-[#332B25] text-[#E2B97A] border border-[#E2B97A]/20 hover:border-[#E2B97A]/40 rounded-2xl px-8 py-4 text-sm font-normal tracking-wide transition-all duration-300 whitespace-nowrap">
               Get Early Access
             </button>
           </div>
+          <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
           <p class="mt-4 text-xs font-light text-[#C7C1BA]/50 text-left px-2">
             You’ll receive the discount link by email. You can unsubscribe at
             any time.
           </p>
+          <div id="early-access-feedback" class="hidden mt-4 text-sm font-light text-center px-2"></div>
         </form>
       </div>
     </section>
@@ -758,5 +760,53 @@
           }
       })();
     </script>
-  
+
+    <script>
+      (function () {
+        const form = document.getElementById('early-access-form');
+        if (!form) return;
+
+        const btn = document.getElementById('early-access-btn');
+        const emailInput = document.getElementById('early-access-email');
+        const feedback = document.getElementById('early-access-feedback');
+
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+
+          const email = emailInput.value.trim();
+          if (!email) return;
+
+          btn.disabled = true;
+          btn.textContent = 'Joining…';
+
+          try {
+            const res = await fetch('https://api.staticforms.dev/submit', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                accessKey: 'sf_c1a814836b4226a23c7a624c',
+                email: email,
+                subject: 'Early Access Request — Atrest',
+                honeypot: ''
+              })
+            });
+
+            const data = await res.json();
+
+            if (res.ok && data.success !== false) {
+              form.innerHTML = '<p class="text-sm font-light text-[#E2B97A]">You\'re on the list. We\'ll be in touch.</p>';
+            } else {
+              throw new Error(data.message || 'Submission failed');
+            }
+          } catch (err) {
+            feedback.textContent = 'Something went wrong. Please try again.';
+            feedback.className = 'mt-4 text-sm font-light text-center px-2 text-red-400';
+            feedback.classList.remove('hidden');
+            btn.disabled = false;
+            btn.textContent = 'Get Early Access';
+          }
+        });
+      })();
+    </script>
+
 </body></html>
