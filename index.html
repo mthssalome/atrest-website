@@ -24,7 +24,7 @@
 
       body {
           font-family: var(--font-sans);
-          background-color: #0F0D14;
+          background-color: #1A1410;
       }
 
       h1, h2, h3, h4, h5, h6, .font-display {
@@ -36,14 +36,14 @@
           width: 8px;
       }
       ::-webkit-scrollbar-track {
-          background: #0F0D14;
+          background: #1A1410;
       }
       ::-webkit-scrollbar-thumb {
-          background: #1A1820;
+          background: #221C18;
           border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-          background: #2A2732;
+          background: #332B25;
       }
 
       /* Subtle animations */
@@ -92,14 +92,15 @@
       }
     </style>
   </head>
-  <body class="bg-[#0F0D14] text-[#F5F1EB] antialiased selection:bg-[#E2B97A]/20 selection:text-[#F5F1EB] overflow-x-hidden relative">
+  <body class="bg-[#1A1410] text-[#F5F1EB] antialiased selection:bg-[#E2B97A]/20 selection:text-[#F5F1EB] overflow-x-hidden relative">
     <!-- Global ambient glow -->
     <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-[#C8A878] opacity-[0.03] blur-[120px] pointer-events-none rounded-full z-0"></div>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-[#0F0D14]/70 backdrop-blur-xl border-b border-[#C8A878]/5 transition-all duration-500">
+    <nav class="fixed top-0 w-full z-50 bg-[#1A1410]/70 backdrop-blur-xl border-b border-[#C8A878]/5 transition-all duration-500">
       <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        <a href="#" class="font-display text-lg tracking-widest font-normal text-[#F5F1EB] hover:text-[#E2B97A] transition-colors duration-300">
+        <a href="#" class="flex items-center gap-3 font-display text-lg tracking-widest font-normal text-[#F5F1EB] hover:text-[#E2B97A] transition-colors duration-300">
+          <img src="Resources/LogoAtrest (1).png" alt="Atrest mark" class="h-8 w-8 rounded-full">
           ATREST
         </a>
         <div class="hidden md:flex items-center space-x-8">
@@ -114,7 +115,7 @@
           </a>
         </div>
         <a href="#early-access" class="group relative px-5 py-2.5 rounded-full overflow-hidden">
-          <div class="absolute inset-0 bg-[#1A1820] border border-[#C8A878]/10 rounded-full transition-colors duration-300 group-hover:border-[#C8A878]/30 group-hover:bg-[#201E28]"></div>
+          <div class="absolute inset-0 bg-[#221C18] border border-[#C8A878]/10 rounded-full transition-colors duration-300 group-hover:border-[#C8A878]/30 group-hover:bg-[#2A231E]"></div>
           <span class="relative text-xs font-normal text-[#E2B97A] group-hover:text-[#F5F1EB] transition-colors duration-300 tracking-wide">
             Early Access
           </span>
@@ -127,8 +128,8 @@
       <!-- Abstract Forest Background -->
       <div class="absolute inset-0 z-0 opacity-40">
         <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&amp;w=2560&amp;auto=format&amp;fit=crop" alt="Misty Forest" class="w-full h-full object-cover object-center scale-105" style="animation: scaleIn 30s linear infinite alternate;">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0F0D14] via-[#0F0D14]/80 to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0F0D14] via-transparent to-transparent opacity-80"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1410] via-[#1A1410]/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#1A1410] via-transparent to-transparent opacity-80"></div>
       </div>
 
       <div class="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
@@ -143,11 +144,11 @@
         </p>
 
         <div class="mt-12 flex flex-col sm:flex-row items-center gap-6 animate-fade-up delay-200">
-          <a href="#early-access" class="w-full sm:w-auto px-8 py-4 bg-[#F5F1EB] text-[#0F0D14] rounded-full text-sm font-normal tracking-wide hover:bg-[#E2B97A] transition-all duration-500 shadow-[0_0_40px_-10px_rgba(226,185,122,0.3)] flex items-center justify-center gap-2">
+          <a href="#early-access" class="w-full sm:w-auto px-8 py-4 bg-[#F5F1EB] text-[#1A1410] rounded-full text-sm font-normal tracking-wide hover:bg-[#E2B97A] transition-all duration-500 shadow-[0_0_40px_-10px_rgba(226,185,122,0.3)] flex items-center justify-center gap-2">
             <iconify-icon icon="solar:apple-outline" class="text-lg"></iconify-icon>
             Download on the App Store
           </a>
-          <a href="#early-access" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-[#C8A878]/20 text-[#E2B97A] rounded-full text-sm font-normal tracking-wide hover:bg-[#1A1820] hover:border-[#C8A878]/40 transition-all duration-500 flex items-center justify-center">
+          <a href="#early-access" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-[#C8A878]/20 text-[#E2B97A] rounded-full text-sm font-normal tracking-wide hover:bg-[#221C18] hover:border-[#C8A878]/40 transition-all duration-500 flex items-center justify-center">
             Join Early Access
             <span class="ml-2 text-xs opacity-60">(50% Lifetime)</span>
           </a>
@@ -196,8 +197,8 @@
           </div>
 
           <!-- Block 2 -->
-          <div class="aspect-[4/3] rounded-3xl bg-[#1A1820] overflow-hidden flex items-center justify-center">
-            <img src="Resources/End-fast.png" alt="Atrest completion screen" class="h-full object-contain">
+          <div class="flex items-center justify-center">
+            <img src="Resources/End-fast.png" alt="Atrest completion screen" class="max-h-[560px] w-auto drop-shadow-2xl">
           </div>
           <div>
             <h3 class="font-display text-2xl md:text-3xl font-light tracking-tight text-[#F5F1EB]">
@@ -219,8 +220,8 @@
               interaction is designed to feel like a slow, intentional breath.
             </p>
           </div>
-          <div class="order-1 md:order-2 aspect-[4/3] rounded-3xl bg-[#1A1820] overflow-hidden flex items-center justify-center">
-            <img src="Resources/Settings.png" alt="Atrest settings screen" class="h-full object-contain">
+          <div class="order-1 md:order-2 flex items-center justify-center">
+            <img src="Resources/Settings.png" alt="Atrest settings screen" class="max-h-[560px] w-auto drop-shadow-2xl">
           </div>
         </div>
       </div>
@@ -229,7 +230,7 @@
     <!-- Vigil Mode -->
     <section class="py-32 relative z-10">
       <div class="max-w-4xl mx-auto px-6">
-        <div class="rounded-[2.5rem] bg-[#1A1820]/80 backdrop-blur-sm border border-[#C8A878]/10 p-10 md:p-16 relative overflow-hidden text-center flex flex-col items-center">
+        <div class="rounded-[2.5rem] bg-[#221C18]/80 backdrop-blur-sm border border-[#C8A878]/10 p-10 md:p-16 relative overflow-hidden text-center flex flex-col items-center">
           <div class="absolute inset-0 bg-gradient-to-b from-[#E2B97A]/[0.02] to-transparent pointer-events-none"></div>
 
           <iconify-icon icon="solar:flame-linear" class="text-3xl text-[#E2B97A]/60 mb-8"></iconify-icon>
@@ -260,7 +261,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Monthly -->
-          <div class="rounded-3xl bg-[#1A1820]/50 border border-[#C8A878]/5 p-8 flex flex-col">
+          <div class="rounded-3xl bg-[#221C18]/50 border border-[#C8A878]/5 p-8 flex flex-col">
             <h4 class="text-sm font-normal text-[#C7C1BA] tracking-wide">
               Monthly
             </h4>
@@ -283,7 +284,7 @@
           </div>
 
           <!-- Lifetime (Highlighted) -->
-          <div class="rounded-3xl bg-[#201E28] border border-[#E2B97A]/20 p-8 flex flex-col relative transform md:-translate-y-4 shadow-2xl shadow-[#E2B97A]/5">
+          <div class="rounded-3xl bg-[#2A231E] border border-[#E2B97A]/20 p-8 flex flex-col relative transform md:-translate-y-4 shadow-2xl shadow-[#E2B97A]/5">
             <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#E2B97A]/10 border border-[#E2B97A]/30 text-[#E2B97A] text-[10px] uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md">
               Early Bird
             </div>
@@ -316,7 +317,7 @@
           </div>
 
           <!-- Annual -->
-          <div class="rounded-3xl bg-[#1A1820]/50 border border-[#C8A878]/5 p-8 flex flex-col">
+          <div class="rounded-3xl bg-[#221C18]/50 border border-[#C8A878]/5 p-8 flex flex-col">
             <h4 class="text-sm font-normal text-[#C7C1BA] tracking-wide">
               Annual
             </h4>
@@ -356,8 +357,8 @@
 
         <form id="early-access-form" class="mt-12 w-full max-w-md mx-auto">
           <div class="flex flex-col sm:flex-row gap-3">
-            <input id="early-access-email" type="email" placeholder="Enter your email" required="" class="flex-1 bg-[#1A1820] border border-[#C8A878]/10 focus:border-[#E2B97A]/40 outline-none text-[#F5F1EB] text-sm font-light rounded-2xl px-6 py-4 placeholder:text-[#C7C1BA]/40 transition-colors duration-300">
-            <button id="early-access-btn" type="submit" class="bg-[#201E28] hover:bg-[#2A2732] text-[#E2B97A] border border-[#E2B97A]/20 hover:border-[#E2B97A]/40 rounded-2xl px-8 py-4 text-sm font-normal tracking-wide transition-all duration-300 whitespace-nowrap">
+            <input id="early-access-email" type="email" placeholder="Enter your email" required="" class="flex-1 bg-[#221C18] border border-[#C8A878]/10 focus:border-[#E2B97A]/40 outline-none text-[#F5F1EB] text-sm font-light rounded-2xl px-6 py-4 placeholder:text-[#C7C1BA]/40 transition-colors duration-300">
+            <button id="early-access-btn" type="submit" class="bg-[#2A231E] hover:bg-[#332B25] text-[#E2B97A] border border-[#E2B97A]/20 hover:border-[#E2B97A]/40 rounded-2xl px-8 py-4 text-sm font-normal tracking-wide transition-all duration-300 whitespace-nowrap">
               Get Early Access
             </button>
           </div>
@@ -380,7 +381,7 @@
 
         <div class="space-y-2">
           <!-- FAQ Item 1 -->
-          <details class="group bg-[#1A1820]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#1A1820]/50">
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
             <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
               <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
                 What makes Atrest different from other fasting apps?
@@ -396,7 +397,7 @@
           </details>
 
           <!-- FAQ Item 2 -->
-          <details class="group bg-[#1A1820]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#1A1820]/50">
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
             <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
               <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
                 Is this app for Christians only?
@@ -412,7 +413,7 @@
           </details>
 
           <!-- FAQ Item 3 -->
-          <details class="group bg-[#1A1820]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#1A1820]/50">
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
             <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
               <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
                 Does the forest gamify fasting?
@@ -427,7 +428,7 @@
           </details>
 
           <!-- FAQ Item 4 -->
-          <details class="group bg-[#1A1820]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#1A1820]/50">
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
             <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
               <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
                 How does Vigil Mode work?
@@ -443,7 +444,7 @@
           </details>
 
           <!-- FAQ Item 5 -->
-          <details class="group bg-[#1A1820]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#1A1820]/50">
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
             <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
               <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
                 Is my data private?
@@ -458,7 +459,7 @@
           </details>
 
           <!-- FAQ Item 6 -->
-          <details class="group bg-[#1A1820]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#1A1820]/50">
+          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
             <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
               <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
                 Will Atrest stay quiet and minimal?
@@ -605,7 +606,7 @@
         </div>
       </div>
     </section>
-    <footer class="py-12 border-t border-[#C8A878]/5 relative z-10 bg-[#0F0D14]">
+    <footer class="py-12 border-t border-[#C8A878]/5 relative z-10 bg-[#1A1410]">
       <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-3">
           <span class="font-display text-sm tracking-widest font-normal text-[#F5F1EB]">
