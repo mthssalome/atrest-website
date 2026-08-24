@@ -1,776 +1,579 @@
-<html lang="en" class="scroll-smooth"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atrest — A Quiet, Premium Fasting App for Serious Fasters</title>
-    <meta name="description" content="Atrest is a beautifully crafted fasting app designed for people who value calm, continuity, and meaning. A quiet companion for serious fasting — where discipline becomes memory.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <style>
-      @font-face {
-          font-family: 'SF Pro Display';
-          src: local('-apple-system'), local('BlinkMacSystemFont');
-          font-weight: 100 900;
-      }
-      @font-face {
-          font-family: 'SF Pro Text';
-          src: local('-apple-system'), local('BlinkMacSystemFont');
-          font-weight: 100 900;
-      }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atrest — something to do with the craving</title>
+<meta name="description" content="Atrest is for the moment you want to vape and don't want to. A three-minute ritual, a tree that grows while you wait, and nothing that breaks on a bad day. Free, offline, on your phone only.">
+<meta name="theme-color" content="#070C15">
 
-      :root {
-          --font-sans: 'SF Pro Text', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-          --font-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      }
+<meta property="og:title" content="Atrest — something to do with the craving">
+<meta property="og:description" content="For the moment you want to vape and don't want to. Free, offline, nothing collected.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://atrest.app/">
 
-      body {
-          font-family: var(--font-sans);
-          background-color: #1A1410;
-      }
+<style>
+  /* ---------------------------------------------------------------
+     Palette — ART_DIRECTION_DECISIONS §5.3 / §5.4.
+     Change --ground and --accent to reskin the whole site.
+     --------------------------------------------------------------- */
+  :root {
+    --ground:      #070C15;  /* ground */
+    --ridge-near:  #0E1B2B;  /* near ridge — cards */
+    --ridge-mid:   #12202F;  /* card hover */
+    --ink:         #E9EEF4;
+    --ink-soft:    #93A5B6;  /* frost family */
+    --ink-faint:   #64778A;
+    --rule:        rgba(143, 166, 184, 0.13);
+    --accent:      #FFC24A;  /* amber bloom */
+    --accent-warm: #FF9A2E;
+    --accent-dim:  rgba(255, 194, 74, 0.14);
 
-      h1, h2, h3, h4, h5, h6, .font-display {
-          font-family: var(--font-display);
-      }
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* Display face is unresolved (MEMORY §5). System stack is the honest interim;
+       when a licensed face is chosen, set --font-display and it applies everywhere. */
+    --font-display: var(--font);
 
-      /* Hide scrollbar for clean aesthetic */
-      ::-webkit-scrollbar {
-          width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-          background: #1A1410;
-      }
-      ::-webkit-scrollbar-thumb {
-          background: #221C18;
-          border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-          background: #332B25;
-      }
+    --measure: 68rem;
+  }
 
-      /* Subtle animations */
-      @keyframes subtleFadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-      }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
-      @keyframes slowPulse {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.6; }
-      }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 300 17px/1.65 var(--font);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
 
-      .animate-fade-up {
-          animation: subtleFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          opacity: 0;
-      }
+  ::selection { background: var(--accent-dim); color: var(--ink); }
 
-      .delay-100 { animation-delay: 100ms; }
-      .delay-200 { animation-delay: 200ms; }
-      .delay-300 { animation-delay: 300ms; }
-      .delay-500 { animation-delay: 500ms; }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
 
-      .glow-effect {
-          position: absolute;
-          width: 300px;
-          height: 300px;
-          background: radial-gradient(circle, rgba(200, 168, 120, 0.08) 0%, rgba(26, 20, 16, 0) 70%);
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 0;
-      }
+  a { color: inherit; }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  /* the parent <details> clips its overflow, so this ring is inset, not offset */
+  summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -3px;
+    border-radius: 3px;
+  }
 
-      /* Custom details/summary for FAQ */
-      details > summary {
-          list-style: none;
-      }
-      details > summary::-webkit-details-marker {
-          display: none;
-      }
-      details[open] summary ~ div {
-          animation: subtleFadeUp 0.4s ease-out forwards;
-      }
-      details[open] summary .icon-toggle {
-          transform: rotate(180deg);
-      }
-    </style>
-  </head>
-  <body class="bg-[#1A1410] text-[#F5F1EB] antialiased selection:bg-[#E2B97A]/20 selection:text-[#F5F1EB] overflow-x-hidden relative">
-    <!-- Global ambient glow -->
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-[#C8A878] opacity-[0.03] blur-[120px] pointer-events-none rounded-full z-0"></div>
+  .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 1.5rem; }
+  .narrow { max-width: 46rem; }
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-[#1A1410]/70 backdrop-blur-xl border-b border-[#C8A878]/5 transition-all duration-500">
-      <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        <a href="#" class="flex items-center gap-3 font-display text-lg tracking-widest font-normal text-[#F5F1EB] hover:text-[#E2B97A] transition-colors duration-300">
-          <img src="Resources/LogoAtrest (1).png" alt="Atrest mark" class="h-8 w-8 rounded-full">
-          ATREST
-        </a>
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#philosophy" class="text-sm font-light text-[#C7C1BA] hover:text-[#F5F1EB] transition-colors duration-300">
-            Philosophy
-          </a>
-          <a href="#experience" class="text-sm font-light text-[#C7C1BA] hover:text-[#F5F1EB] transition-colors duration-300">
-            Experience
-          </a>
-          <a href="#pricing" class="text-sm font-light text-[#C7C1BA] hover:text-[#F5F1EB] transition-colors duration-300">
-            Access
-          </a>
-        </div>
-        <a href="#early-access" class="group relative px-5 py-2.5 rounded-full overflow-hidden">
-          <div class="absolute inset-0 bg-[#221C18] border border-[#C8A878]/10 rounded-full transition-colors duration-300 group-hover:border-[#C8A878]/30 group-hover:bg-[#2A231E]"></div>
-          <span class="relative text-xs font-normal text-[#E2B97A] group-hover:text-[#F5F1EB] transition-colors duration-300 tracking-wide">
-            Early Access
-          </span>
-        </a>
+  /* ambient glow ------------------------------------------------- */
+  .glow {
+    position: fixed;
+    top: -12rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(56rem, 120vw);
+    height: 34rem;
+    background: radial-gradient(closest-side, rgba(255, 194, 74, 0.07), rgba(7, 12, 21, 0));
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* nav ---------------------------------------------------------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(7, 12, 21, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav .wrap {
+    height: 4.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    letter-spacing: 0.22em;
+    text-decoration: none;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .mark { height: 1.75rem; width: 1.75rem; border-radius: 50%; display: block; }
+
+  /* App Store badge — official asset, light artwork inverted onto the dark ground */
+  .badge { display: inline-block; line-height: 0; transition: opacity 0.18s ease; }
+  .badge:hover { opacity: 0.82; }
+  .badge img { height: 3.25rem; width: auto; display: block; filter: invert(1); }
+  .navlinks { display: none; gap: 2rem; }
+  .navlinks a {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.18s ease;
+  }
+  .navlinks a:hover { color: var(--ink); }
+  @media (min-width: 46rem) { .navlinks { display: flex; } }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.15rem;
+    border: 1px solid rgba(255, 194, 74, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 194, 74, 0.05);
+    color: var(--accent);
+    font-size: 0.8125rem;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.18s ease, border-color 0.18s ease;
+  }
+  .pill:hover { background: rgba(255, 194, 74, 0.1); border-color: rgba(255, 194, 74, 0.5); }
+  .pill.big { padding: 0.9rem 1.6rem; font-size: 0.9375rem; }
+
+  /* hero ---------------------------------------------------------- */
+  header.hero { position: relative; z-index: 1; padding: 5.5rem 0 3rem; }
+  @media (min-width: 46rem) { header.hero { padding: 8rem 0 4rem; } }
+
+  h1 {
+    font-size: clamp(2.1rem, 6.2vw, 3.9rem);
+    line-height: 1.08;
+    max-width: 20ch;
+  }
+  .lede {
+    margin: 1.75rem 0 0;
+    max-width: 46ch;
+    font-size: 1.0625rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .cta-row {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+  }
+  .cta-note { font-size: 0.8125rem; color: var(--ink-faint); }
+
+  /* the tree ------------------------------------------------------ */
+  .tree-stage {
+    position: relative;
+    z-index: 1;
+    margin: 1rem auto 0;
+    max-width: 34rem;
+    padding: 0 1.5rem;
+  }
+  .tree-stage svg { width: 100%; height: auto; display: block; }
+
+  /* screenshot slot — same footprint as the SVG stage */
+  .shot {
+    position: relative;
+    z-index: 1;
+    margin: 1rem auto 0;
+    max-width: 22rem;
+    padding: 0 1.5rem;
+  }
+  .shot img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1.5rem;
+    border: 1px solid var(--rule);
+  }
+
+  .branch {
+    stroke: #080D14;
+    stroke-linecap: round;
+    fill: none;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: draw 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .rim {
+    stroke: rgba(147, 165, 182, 0.5);
+    stroke-linecap: round;
+    fill: none;
+    stroke-width: 1;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: draw 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .bloom { opacity: 0; animation: bloom 1.6s ease-out forwards; }
+  .mote  { opacity: 0; animation: bloom 2.4s ease-out forwards; }
+
+  @keyframes draw  { to { stroke-dashoffset: 0; } }
+  @keyframes bloom { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+
+  /* sections ------------------------------------------------------ */
+  section { position: relative; z-index: 1; padding: 4.5rem 0; }
+  @media (min-width: 46rem) { section { padding: 6.5rem 0; } }
+  section + section { border-top: 1px solid var(--rule); }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 1.25rem;
+  }
+  h2 { font-size: clamp(1.5rem, 3.4vw, 2.15rem); line-height: 1.2; max-width: 22ch; }
+  h3 { font-size: 1.125rem; letter-spacing: -0.01em; }
+  p  { margin: 1rem 0 0; color: var(--ink-soft); }
+  .statement {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3.2vw, 1.9rem);
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 30ch;
+    margin: 0;
+  }
+  .statement span { color: var(--ink-soft); }
+
+  .grid { display: grid; gap: 1rem; margin-top: 2.5rem; }
+  @media (min-width: 46rem) { .grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
+
+  .card {
+    background: var(--ridge-near);
+    border: 1px solid var(--rule);
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+    transition: background 0.2s ease;
+  }
+  .card:hover { background: var(--ridge-mid); }
+  .card p { margin-top: 0.75rem; font-size: 0.9375rem; }
+
+  ul.plain { list-style: none; margin: 2rem 0 0; padding: 0; max-width: 44rem; }
+  ul.plain li {
+    padding: 1.15rem 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    gap: 0.35rem;
+  }
+  ul.plain li:last-child { border-bottom: 1px solid var(--rule); }
+  ul.plain strong { font-weight: 400; color: var(--ink); }
+  ul.plain span { color: var(--ink-soft); font-size: 0.9375rem; }
+
+  .absent { margin: 2rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.6rem; }
+  .absent li {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+    color: var(--ink);
+  }
+
+  /* FAQ ----------------------------------------------------------- */
+  details {
+    border: 1px solid var(--rule);
+    border-radius: 1rem;
+    background: rgba(14, 27, 43, 0.55);
+    margin-top: 0.6rem;
+    overflow: hidden;
+  }
+  details summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.15rem 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.9375rem;
+    color: var(--ink);
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: "+";
+    color: var(--ink-faint);
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  details .answer {
+    padding: 0 1.4rem 1.35rem;
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+  }
+  details .answer p:first-child { margin-top: 0; }
+
+  /* footer -------------------------------------------------------- */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--rule);
+    padding: 2.5rem 0 3.5rem;
+    font-size: 0.8125rem;
+    color: var(--ink-faint);
+  }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover { color: var(--ink); }
+  footer nav { position: static; background: none; border: 0; backdrop-filter: none; }
+  .footlinks { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+
+  .fade { animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .d1 { animation-delay: 0.08s; }
+  .d2 { animation-delay: 0.16s; }
+  .d3 { animation-delay: 0.24s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0.001ms !important;
+    }
+    .branch, .rim { stroke-dashoffset: 0; }
+    .bloom, .mote { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="glow" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="wordmark" href="/">
+      <img class="mark" src="Resources/logo.png" alt="">
+      ATREST
+    </a>
+    <div class="navlinks">
+      <a href="#ritual">The ritual</a>
+      <a href="#inside">What's in it</a>
+      <a href="#privacy">Privacy</a>
+    </div>
+    <!-- REPLACE href with the App Store URL once the app is live -->
+    <a class="pill" href="#" aria-label="Download Atrest on the App Store">App Store</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1 class="fade">For the moment you want to vape and don't want to.</h1>
+    <p class="lede fade d1">Open it and there's one thing waiting: a three-minute ritual. A tree grows while you wait. It asks you nothing.</p>
+    <div class="cta-row fade d2">
+      <!-- REPLACE href with the App Store URL once the app is live -->
+      <a class="badge" href="#" aria-label="Download Atrest on the App Store">
+        <img src="Resources/app-store-badge.svg" alt="Download on the App Store">
+      </a>
+      <span class="cta-note">Free. Offline. Nothing to buy.</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===============================================================
+     THE ONE SCREENSHOT SLOT.
+
+     When you have a clean crop of a finished ritual tree, save it as
+     Resources/ritual-tree.png, then DELETE the <div class="tree-stage">
+     block below and uncomment this figure in its place.
+
+     Crop: the tree and its blooms, full bleed, no status bar, no nav
+     chrome. Portrait, roughly 3:4 or taller. Export at 2x the display
+     size (about 1200px wide) so it stays sharp on retina.
+
+     Must not show: the forest, any paywall, or a days-since-last-slip
+     figure — that clock does not render in the app, so a crop showing
+     one would be inventing a surface.
+
+<figure class="shot fade d3">
+  <img src="Resources/ritual-tree.png" alt="A tree grown during the craving ritual, lit by its own blooms" width="1200" height="1600">
+</figure>
+     =============================================================== -->
+
+<!-- Illustration, not a screenshot. Delete this block when the figure above goes in. -->
+<div class="tree-stage fade d3" aria-hidden="true">
+  <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+    <g class="branch" stroke-width="7">
+      <path d="M210 300 L210 196" style="animation-delay:.1s"/>
+    </g>
+    <g class="branch" stroke-width="5">
+      <path d="M210 214 L166 168" style="animation-delay:.5s"/>
+      <path d="M210 226 L256 178" style="animation-delay:.65s"/>
+      <path d="M210 196 L210 150" style="animation-delay:.8s"/>
+    </g>
+    <g class="branch" stroke-width="3.5">
+      <path d="M166 168 L138 132" style="animation-delay:1s"/>
+      <path d="M166 168 L176 126" style="animation-delay:1.1s"/>
+      <path d="M256 178 L288 146" style="animation-delay:1.2s"/>
+      <path d="M256 178 L250 134" style="animation-delay:1.3s"/>
+      <path d="M210 150 L186 114" style="animation-delay:1.4s"/>
+      <path d="M210 150 L236 112" style="animation-delay:1.5s"/>
+    </g>
+    <g class="rim">
+      <path d="M210 300 L210 196" style="animation-delay:.1s"/>
+      <path d="M210 214 L166 168" style="animation-delay:.5s"/>
+      <path d="M210 150 L236 112" style="animation-delay:1.5s"/>
+    </g>
+    <g style="transform-origin:center">
+      <circle class="bloom" cx="138" cy="132" r="6"  fill="#FFC24A" style="animation-delay:1.6s"/>
+      <circle class="bloom" cx="176" cy="126" r="4.5" fill="#FFAE38" style="animation-delay:1.8s"/>
+      <circle class="bloom" cx="288" cy="146" r="5"  fill="#FFD066" style="animation-delay:2s"/>
+      <circle class="bloom" cx="250" cy="134" r="6.5" fill="#FF9A2E" style="animation-delay:2.2s"/>
+      <circle class="bloom" cx="186" cy="114" r="4"  fill="#FFC24A" style="animation-delay:2.4s"/>
+      <circle class="bloom" cx="236" cy="112" r="5.5" fill="#F5872A" style="animation-delay:2.6s"/>
+      <circle class="mote" cx="120" cy="104" r="1.8" fill="#FFD066" style="animation-delay:2.8s"/>
+      <circle class="mote" cx="304" cy="112" r="1.6" fill="#FFC24A" style="animation-delay:3s"/>
+      <circle class="mote" cx="212" cy="80"  r="1.5" fill="#FFAE38" style="animation-delay:3.1s"/>
+      <circle class="mote" cx="270" cy="92"  r="1.7" fill="#FFD066" style="animation-delay:3.2s"/>
+      <circle class="mote" cx="158" cy="88"  r="1.4" fill="#FFC24A" style="animation-delay:3.3s"/>
+    </g>
+  </svg>
+</div>
+
+<section id="ritual">
+  <div class="wrap">
+    <p class="eyebrow">The ritual</p>
+    <p class="statement"><span>A craving lasts a few minutes.</span> This is something to do with them.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Three minutes</h3>
+        <p>Tap once. A tree grows on its own. There is no input to give, nothing to get right, and no way to do it badly.</p>
       </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      <!-- Abstract Forest Background -->
-      <div class="absolute inset-0 z-0 opacity-40">
-        <img src="Resources/Web-back.png" alt="Misty Forest" class="w-full h-full object-cover object-center">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1410] via-[#1A1410]/80 to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-[#1A1410] via-transparent to-transparent opacity-80"></div>
+      <div class="card">
+        <h3>A different tree every time</h3>
+        <p>Each one grows from its own seed. Leave at twenty seconds and you keep what grew — an unfinished tree is kept exactly like a finished one.</p>
       </div>
-
-      <div class="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
-        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-[#F5F1EB] leading-[1.1] animate-fade-up max-w-4xl drop-shadow-2xl">
-          A quiet companion
-          <br class="hidden md:block">
-          for serious vaping
-        </h1>
-        <p class="mt-8 text-lg md:text-xl font-light text-[#C7C1BA] max-w-2xl leading-relaxed tracking-wide animate-fade-up delay-100">
-          Where discipline becomes memory. A beautifully crafted fasting app for
-          people who value calm, continuity, and meaning.
-        </p>
-
-        <div class="mt-12 flex flex-col sm:flex-row items-center gap-6 animate-fade-up delay-200">
-          <a href="https://apps.apple.com/us/app/atrest-intermittent-fasting/id6764279336" target="_blank" rel="noopener" class="hover:opacity-80 transition-opacity duration-300">
-            <img src="Resources/app-store-badge.svg" alt="Download on the App Store" class="h-14" style="filter: invert(1);">
-          </a>
-          <a href="#early-access" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-[#C8A878]/20 text-[#E2B97A] rounded-full text-sm font-normal tracking-wide hover:bg-[#221C18] hover:border-[#C8A878]/40 transition-all duration-500 flex items-center justify-center">
-            Get 50% off — Early Access
-          </a>
-        </div>
-
-        <!-- Device Mockup -->
-        <div class="mt-24 animate-fade-up delay-300">
-          <img src="Resources/Shot2.png" alt="Atrest app — dawn forest screen" class="w-full max-w-[300px] mx-auto drop-shadow-2xl">
-        </div>
+      <div class="card">
+        <h3>Yours afterwards</h3>
+        <p>The tree stays. Keep it or don't, share it or don't. Nothing asks you to.</p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- Philosophy Section -->
-    <section id="philosophy" class="py-32 md:py-48 relative z-10">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <p class="font-display text-2xl md:text-4xl font-light leading-relaxed tracking-tight text-[#F5F1EB] md:leading-[1.4]">
-          <span class="text-[#C7C1BA]">Fasting is not a performance.</span>
-          <br>
-          <span class="text-[#C7C1BA]">It’s a practice.</span>
-          <br>
-          <br>
-          Atrest gives your discipline a place to live —
-          <br class="hidden md:block">
-          quietly, beautifully, and without noise.
-        </p>
+<section id="inside">
+  <div class="wrap">
+    <p class="eyebrow">What's in it</p>
+    <h2>Five things, and none of them keeps score.</h2>
+
+    <ul class="plain">
+      <li>
+        <strong>The craving ritual</strong>
+        <span>The largest thing on the screen, always one tap away.</span>
+      </li>
+      <li>
+        <strong>A count of days since you started</strong>
+        <span>It doesn't reset, and logging a slip doesn't take it away.</span>
+      </li>
+      <li>
+        <strong>A calendar you can mark honestly</strong>
+        <span>Logging a slip costs nothing. Un-logging it leaves no trace.</span>
+      </li>
+      <li>
+        <strong>A line about who you're becoming</strong>
+        <span>In your own words, changeable the moment it stops being true.</span>
+      </li>
+      <li>
+        <strong>Notes, typed or spoken</strong>
+        <span>Nothing reads them but you. Not the app, not me, not anything.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What isn't in it</p>
+    <ul class="absent">
+      <li>No scores.</li>
+      <li>No badges.</li>
+      <li>No leaderboard.</li>
+    </ul>
+    <p class="lede">Nothing that turns a bad day into a number you have to look at afterwards. A slip is a day you marked, and that is all it is.</p>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <p class="eyebrow">Privacy</p>
+    <h2>The app makes no network requests. Not one.</h2>
+    <p class="lede">No account, no sign-in, no sync, no analytics, no third-party code of any kind. Everything you write stays in the app's own storage on your phone. Voice notes are written out by your own phone and are never sent anywhere.</p>
+    <p class="lede">This page loads nothing from anywhere else either.</p>
+    <div class="cta-row">
+      <a class="pill" href="/privacy.html">Read the privacy page</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2>Questions</h2>
+
+    <details>
+      <summary>What happens if I slip?</summary>
+      <div class="answer">
+        <p>You mark the day, if you want to. The count of days since you started doesn't move, nothing is taken away, and nothing you wrote about yourself changes. Logging is never required — the app never assumes anything about a day you didn't mark.</p>
       </div>
-    </section>
+    </details>
 
-    <!-- UI Showcase -->
-    <section id="experience" class="py-24 relative z-10">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center">
-          <!-- Block 1 -->
-          <div class="order-2 md:order-1">
-            <h3 class="font-display text-2xl md:text-3xl font-light tracking-tight text-[#F5F1EB]">
-              A forest that remembers.
-            </h3>
-            <p class="mt-6 text-base font-light text-[#C7C1BA] leading-relaxed">
-              Your fasting history becomes a living landscape — calm,
-              deterministic, and deeply personal. Watch your discipline slowly
-              shape the environment without the pressure of metrics.
-            </p>
-          </div>
-          <div class="order-1 md:order-2 aspect-square rounded-3xl overflow-hidden">
-            <img src="Resources/Night-Full-Wide-1X1.png" alt="Atrest dawn forest landscape" class="w-full h-full object-cover">
-          </div>
-
-          <!-- Block 2 -->
-          <div class="flex items-center justify-center">
-            <img src="Resources/End-fast.png" alt="Atrest completion screen" class="max-h-[560px] w-auto drop-shadow-2xl">
-          </div>
-          <div>
-            <h3 class="font-display text-2xl md:text-3xl font-light tracking-tight text-[#F5F1EB]">
-              Completion without noise.
-            </h3>
-            <p class="mt-6 text-base font-light text-[#C7C1BA] leading-relaxed">
-              No streaks. No badges. No dopamine engineering. Just a quiet
-              moment that belongs entirely to you when a fast is completed.
-            </p>
-          </div>
-
-          <!-- Block 3 -->
-          <div class="order-2 md:order-1">
-            <h3 class="font-display text-2xl md:text-3xl font-light tracking-tight text-[#F5F1EB]">
-              Designed for clarity.
-            </h3>
-            <p class="mt-6 text-base font-light text-[#C7C1BA] leading-relaxed">
-              Clean typography, gentle motion, and a premium experience. Every
-              interaction is designed to feel like a slow, intentional breath.
-            </p>
-          </div>
-          <div class="order-1 md:order-2 flex items-center justify-center">
-            <img src="Resources/Settings.png" alt="Atrest settings screen" class="max-h-[560px] w-auto drop-shadow-2xl">
-          </div>
-        </div>
+    <details>
+      <summary>Is it really free?</summary>
+      <div class="answer">
+        <p>This version is entirely free. There is nothing to buy, no subscription, and no part of it held back. If a future version charges for something, it will be visible before you get there, and it won't take away anything you already have.</p>
       </div>
-    </section>
+    </details>
 
-    <!-- Vigil Mode -->
-    <section class="py-32 relative z-10">
-      <div class="max-w-4xl mx-auto px-6">
-        <div class="rounded-[2.5rem] bg-[#221C18]/80 backdrop-blur-sm border border-[#C8A878]/10 p-10 md:p-16 relative overflow-hidden text-center flex flex-col items-center">
-          <div class="absolute inset-0 bg-gradient-to-b from-[#E2B97A]/[0.02] to-transparent pointer-events-none"></div>
-
-          <iconify-icon icon="solar:flame-linear" class="text-3xl text-[#E2B97A]/60 mb-8"></iconify-icon>
-
-          <h3 class="font-display text-2xl md:text-3xl font-light tracking-tight text-[#F5F1EB]">
-            Vigil Mode
-          </h3>
-          <p class="mt-6 text-base font-light text-[#C7C1BA] max-w-2xl leading-relaxed">
-            For those who fast during Lent, Advent, the Apostles’ Fast, or other
-            sacred periods — Vigil Mode offers quiet scriptural reflections
-            without altering the core minimalist experience.
-          </p>
-        </div>
+    <details>
+      <summary>Does it work without a connection?</summary>
+      <div class="answer">
+        <p>It only works without one, in the sense that it never uses one. There is no server, no account and no sync. Everything happens on the device.</p>
       </div>
-    </section>
+    </details>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-24 relative z-10 border-t border-[#C8A878]/5">
-      <div class="max-w-5xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="font-display text-3xl md:text-4xl font-light tracking-tight text-[#F5F1EB]">
-            Early Access — 50% Lifetime
-          </h2>
-          <p class="mt-4 text-sm font-light text-[#C7C1BA]">
-            A limited batch for our earliest supporters.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Monthly -->
-          <div class="rounded-3xl bg-[#221C18]/50 border border-[#C8A878]/5 p-8 flex flex-col">
-            <h4 class="text-sm font-normal text-[#C7C1BA] tracking-wide">
-              Monthly
-            </h4>
-            <div class="mt-4 flex items-baseline gap-2">
-              <span class="font-display text-3xl font-light text-[#F5F1EB]">
-                $4.99
-              </span>
-              <span class="text-xs text-[#C7C1BA]/60">/mo</span>
-            </div>
-            <ul class="mt-8 flex-1 space-y-4">
-              <li class="flex items-start gap-3 text-sm text-[#C7C1BA] font-light">
-                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A]/50 mt-0.5"></iconify-icon>
-                Full aesthetic tracker
-              </li>
-              <li class="flex items-start gap-3 text-sm text-[#C7C1BA] font-light">
-                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A]/50 mt-0.5"></iconify-icon>
-                Vigil Mode access
-              </li>
-            </ul>
-          </div>
-
-          <!-- Lifetime (Highlighted) -->
-          <div class="rounded-3xl bg-[#2A231E] border border-[#E2B97A]/20 p-8 flex flex-col relative transform md:-translate-y-4 shadow-2xl shadow-[#E2B97A]/5">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#E2B97A]/10 border border-[#E2B97A]/30 text-[#E2B97A] text-[10px] uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md">
-              Early Bird
-            </div>
-            <h4 class="text-sm font-normal text-[#E2B97A] tracking-wide">
-              Lifetime Access
-            </h4>
-            <div class="mt-4 flex items-baseline gap-2">
-              <span class="font-display text-4xl font-light text-[#F5F1EB]">
-                $49.99
-              </span>
-              <span class="text-xs text-[#C7C1BA]/60 line-through">$99.99</span>
-            </div>
-            <p class="mt-2 text-xs text-[#C7C1BA]/80 font-light">
-              Pay once. Fast forever.
-            </p>
-            <ul class="mt-8 flex-1 space-y-4">
-              <li class="flex items-start gap-3 text-sm text-[#F5F1EB] font-light">
-                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A] mt-0.5"></iconify-icon>
-                All current features
-              </li>
-              <li class="flex items-start gap-3 text-sm text-[#F5F1EB] font-light">
-                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A] mt-0.5"></iconify-icon>
-                All future updates included
-              </li>
-              <li class="flex items-start gap-3 text-sm text-[#F5F1EB] font-light">
-                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A] mt-0.5"></iconify-icon>
-                Support independent design
-              </li>
-            </ul>
-          </div>
-
-          <!-- Annual -->
-          <div class="rounded-3xl bg-[#221C18]/50 border border-[#C8A878]/5 p-8 flex flex-col">
-            <h4 class="text-sm font-normal text-[#C7C1BA] tracking-wide">
-              Annual
-            </h4>
-            <div class="mt-4 flex items-baseline gap-2">
-              <span class="font-display text-3xl font-light text-[#F5F1EB]">
-                $39.99
-              </span>
-              <span class="text-xs text-[#C7C1BA]/60">/yr</span>
-            </div>
-            <ul class="mt-8 flex-1 space-y-4">
-              <li class="flex items-start gap-3 text-sm text-[#C7C1BA] font-light">
-                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A]/50 mt-0.5"></iconify-icon>
-                2 months free
-              </li>
-              <li class="flex items-start gap-3 text-sm text-[#C7C1BA] font-light">
-                <iconify-icon icon="solar:check-circle-linear" class="text-[#E2B97A]/50 mt-0.5"></iconify-icon>
-                Full experience
-              </li>
-            </ul>
-          </div>
-        </div>
+    <details>
+      <summary>Is this for vaping or for smoking?</summary>
+      <div class="answer">
+        <p>It's built for vaping. Nothing in it is specific to one or the other — a craving is a craving — but the language and the design are aimed at people putting down a vape.</p>
       </div>
-    </section>
+    </details>
 
-    <!-- Email Capture Section (Ethical) -->
-    <section id="early-access" class="py-32 relative z-10">
-      <div class="max-w-2xl mx-auto px-6 text-center">
-        <h2 class="font-display text-3xl md:text-4xl font-light tracking-tight text-[#F5F1EB]">
-          Join the early access list.
-        </h2>
-        <p class="mt-6 text-base font-light text-[#C7C1BA] leading-relaxed">
-          Members of this list receive a 50% Lifetime Access discount when
-          Atrest launches.
-          <br>
-          No pressure. No commitments. Just an invitation.
-        </p>
-
-        <form id="early-access-form" class="mt-12 w-full max-w-md mx-auto">
-          <div class="flex flex-col sm:flex-row gap-3">
-            <input id="early-access-email" type="email" placeholder="Enter your email" required="" class="flex-1 bg-[#221C18] border border-[#C8A878]/10 focus:border-[#E2B97A]/40 outline-none text-[#F5F1EB] text-sm font-light rounded-2xl px-6 py-4 placeholder:text-[#C7C1BA]/40 transition-colors duration-300">
-            <button id="early-access-btn" type="submit" class="bg-[#2A231E] hover:bg-[#332B25] text-[#E2B97A] border border-[#E2B97A]/20 hover:border-[#E2B97A]/40 rounded-2xl px-8 py-4 text-sm font-normal tracking-wide transition-all duration-300 whitespace-nowrap">
-              Get Early Access
-            </button>
-          </div>
-          <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
-          <p class="mt-4 text-xs font-light text-[#C7C1BA]/50 text-left px-2">
-            You’ll receive the discount link by email. You can unsubscribe at
-            any time.
-          </p>
-          <div id="early-access-feedback" class="hidden mt-4 text-sm font-light text-center px-2"></div>
-        </form>
-        <div class="mt-10 flex justify-center">
-          <a href="https://apps.apple.com/us/app/atrest-intermittent-fasting/id6764279336" target="_blank" rel="noopener" class="hover:opacity-80 transition-opacity duration-300">
-            <img src="Resources/app-store-badge.svg" alt="Download on the App Store" class="h-12" style="filter: invert(1);">
-          </a>
-        </div>
+    <details>
+      <summary>Why is it rated 18+?</summary>
+      <div class="answer">
+        <p>Apple's age questionnaire asks how often an app refers to tobacco or drug use, and for an app about quitting vaping the honest answer is "frequently" — which produces an 18+ rating whatever the reason for the references. The established quit-smoking apps carry the same rating for the same reason. Atrest shows no nicotine product and encourages no one to use one.</p>
       </div>
-    </section>
+    </details>
 
-    <!-- FAQ Section -->
-    <section class="py-24 relative z-10 border-t border-[#C8A878]/5">
-      <div class="max-w-3xl mx-auto px-6">
-        <h2 class="font-display text-2xl font-light tracking-tight text-[#F5F1EB] mb-12 text-center">
-          Questions &amp; Philosophy
-        </h2>
-
-        <div class="space-y-2">
-          <!-- FAQ Item 1 -->
-          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
-            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
-              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
-                What makes Atrest different from other fasting apps?
-              </span>
-              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
-            </summary>
-            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
-              Atrest is designed for serious fasting, not motivation. It avoids
-              streaks, badges, and gamification. Instead, it offers a quiet,
-              premium environment where your discipline becomes a living memory
-              in the form of a forest.
-            </div>
-          </details>
-
-          <!-- FAQ Item 2 -->
-          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
-            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
-              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
-                Is this app for Christians only?
-              </span>
-              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
-            </summary>
-            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
-              No. Atrest is for anyone who takes fasting seriously and prefers a
-              calm, aesthetic experience. Some features, like Vigil Mode, are
-              designed for people who fast during specific sacred periods, but
-              the core app is neutral and non-religious.
-            </div>
-          </details>
-
-          <!-- FAQ Item 3 -->
-          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
-            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
-              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
-                Does the forest gamify fasting?
-              </span>
-              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
-            </summary>
-            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
-              No. The forest is a visual record of continuity, not a game. There
-              are no rewards, points, or streak mechanics. The forest grows as a
-              quiet reflection of your practice, not as a way to pressure you.
-            </div>
-          </details>
-
-          <!-- FAQ Item 4 -->
-          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
-            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
-              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
-                How does Vigil Mode work?
-              </span>
-              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
-            </summary>
-            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
-              Vigil Mode is an optional layer for people who fast during periods
-              like Lent, Advent, or the Apostles’ Fast. It adds quiet scriptural
-              reflections without changing the core tracking experience. It is
-              completely optional and can be turned off at any time.
-            </div>
-          </details>
-
-          <!-- FAQ Item 5 -->
-          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
-            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
-              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
-                Is my data private?
-              </span>
-              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
-            </summary>
-            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
-              Yes. Atrest is designed with privacy in mind. Your fasting history
-              is stored securely and is never sold. Only the minimum necessary
-              data is collected to provide the core experience.
-            </div>
-          </details>
-
-          <!-- FAQ Item 6 -->
-          <details class="group bg-[#221C18]/30 rounded-2xl border border-[#C8A878]/5 overflow-hidden transition-colors hover:bg-[#221C18]/50">
-            <summary class="flex items-center justify-between cursor-pointer p-6 outline-none">
-              <span class="text-sm font-normal text-[#F5F1EB] tracking-wide">
-                Will Atrest stay quiet and minimal?
-              </span>
-              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[#C7C1BA] icon-toggle transition-transform duration-300"></iconify-icon>
-            </summary>
-            <div class="px-6 pb-6 pt-2 text-sm font-light text-[#C7C1BA] leading-relaxed border-t border-[#C8A878]/5">
-              Yes. Atrest is built on a clear doctrine: no noise, no
-              gamification, no motivational tricks. The product will remain
-              quiet, serious, and aesthetic as it evolves.
-            </div>
-          </details>
-        </div>
+    <details>
+      <summary>Is this medical treatment?</summary>
+      <div class="answer">
+        <p>No. Atrest is not a medical device, not treatment, and not advice from a clinician. Nicotine dependence is a medical matter and there is real help for it — a doctor or pharmacist can point you to it. In Belgium, Tabacstop is free and anonymous on <a href="tel:080011100">0800 111 00</a>.</p>
       </div>
-    </section>
+    </details>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <section id="terms-view" class="hidden py-32 relative z-10 min-h-screen">
-      <div class="max-w-3xl mx-auto px-6">
-        <h1 class="font-display text-3xl md:text-4xl font-light tracking-tight text-[#F5F1EB] mb-12">
-          Terms of Use — Atrest
-        </h1>
-        <div class="space-y-8 text-[#C7C1BA] font-light text-sm leading-relaxed">
-          <div>
-            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
-              Introduction
-            </h2>
-            <p>
-              Welcome to Atrest. By accessing or using our app, you agree to be
-              bound by these Terms of Use. If you do not agree to these terms,
-              please do not use Atrest.
-            </p>
-          </div>
-          <div>
-            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
-              Use of the App
-            </h2>
-            <p>
-              Atrest is a minimal fasting tracker designed for personal use. It
-              is not intended to provide medical advice, diagnosis, or
-              treatment. Always consult with a healthcare professional before
-              making any significant changes to your diet or fasting habits.
-            </p>
-          </div>
-          <div>
-            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
-              Limitations
-            </h2>
-            <p>
-              We provide Atrest on an "as is" and "as available" basis. We do
-              not guarantee that the app will be completely uninterrupted or
-              error-free. We reserve the right to modify or discontinue the app
-              at any time without notice.
-            </p>
-          </div>
-          <div>
-            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
-              User Responsibilities
-            </h2>
-            <p>
-              You are solely responsible for your use of Atrest. You agree to
-              use the app respectfully and in compliance with all applicable
-              local, state, and federal laws.
-            </p>
-          </div>
-          <div>
-            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
-              Contact Information
-            </h2>
-            <p>
-              If you have any questions about these Terms, please contact us at
-              <a href="mailto:arav@atrest.app" class="text-[#E2B97A] hover:text-[#F5F1EB] transition-colors">
-                arav@atrest.app
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+<footer>
+  <div class="wrap">
+    <div>Atrest · Aravinthan Nair, Belgium</div>
+    <div class="footlinks">
+      <a href="mailto:arav@atrest.app">arav@atrest.app</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
 
-    <section id="privacy-view" class="hidden py-32 relative z-10 min-h-screen">
-      <div class="max-w-3xl mx-auto px-6">
-        <h1 class="font-display text-3xl md:text-4xl font-light tracking-tight text-[#F5F1EB] mb-12">
-          Privacy Policy — Atrest
-        </h1>
-        <div class="space-y-8 text-[#C7C1BA] font-light text-sm leading-relaxed">
-          <div>
-            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
-              Data We Collect
-            </h2>
-            <p>
-              Atrest is built with absolute privacy at its core. We collect only
-              the minimum amount of data necessary to provide the core fasting
-              experience. Your fasting history is securely stored on your device
-              and synced via native Apple iCloud architecture.
-            </p>
-          </div>
-          <div>
-            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
-              How We Use Data
-            </h2>
-            <p>
-              The minimal data we handle is used strictly to operate and improve
-              Atrest. We do not sell your data, we do not run third-party
-              advertisements, and we cannot read or access your personal fasting
-              history.
-            </p>
-          </div>
-          <div>
-            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
-              Your Rights
-            </h2>
-            <p>
-              You retain full control over your personal data. You can delete
-              your fasting history at any time directly within the app, which
-              will permanently remove it from your device and your connected
-              iCloud account.
-            </p>
-          </div>
-          <div>
-            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
-              Data Retention
-            </h2>
-            <p>
-              We only retain data for as long as you use the application. If you
-              choose to delete your data or your account, it is immediately and
-              permanently removed from our active operations.
-            </p>
-          </div>
-          <div>
-            <h2 class="font-display text-xl text-[#F5F1EB] mb-4">
-              Contact Information
-            </h2>
-            <p>
-              If you have any privacy-related questions or concerns, please
-              reach out to us at
-              <a href="mailto:arav@atrest.app" class="text-[#E2B97A] hover:text-[#F5F1EB] transition-colors">
-                support@atrest.com
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <footer class="py-12 border-t border-[#C8A878]/5 relative z-10 bg-[#1A1410]">
-      <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <span class="font-display text-sm tracking-widest font-normal text-[#F5F1EB]">
-            ATREST
-          </span>
-          <span class="text-[#C7C1BA]/30 text-xs">|</span>
-          <span class="text-xs font-light text-[#C7C1BA]">
-            Discipline without noise.
-          </span>
-        </div>
-
-        <div class="flex gap-8">
-          <a href="#" class="text-xs font-light text-[#C7C1BA] hover:text-[#E2B97A] transition-colors duration-300">
-            Twitter / X
-          </a>
-          <a href="mailto:arav@atrest.app" class="text-xs font-light text-[#C7C1BA] hover:text-[#E2B97A] transition-colors duration-300">
-            Contact
-          </a>
-          <a href="/privacy.html" class="text-xs font-light text-[#C7C1BA] hover:text-[#E2B97A] transition-colors duration-300">
-            Privacy Policy
-          </a>
-          <a href="/terms.html" class="text-xs font-light text-[#C7C1BA] hover:text-[#E2B97A] transition-colors duration-300">
-            Terms of Use
-          </a>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Interactive Scripts -->
-    <script>
-      // Smooth scroll handling for internal links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-              e.preventDefault();
-              const target = document.querySelector(this.getAttribute('href'));
-              if (target) {
-                  target.scrollIntoView({
-                      behavior: 'smooth'
-                  });
-              }
-          });
-      });
-
-      // Close other FAQ details when one is opened for a cleaner accordion effect
-      const details = document.querySelectorAll('details');
-      details.forEach(targetDetail => {
-          targetDetail.addEventListener('click', () => {
-              details.forEach(detail => {
-                  if (detail !== targetDetail) {
-                      detail.removeAttribute('open');
-                  }
-              });
-          });
-      });
-
-      // Subtle parallax effect on scroll for abstract elements
-      window.addEventListener('scroll', () => {
-          const scrolled = window.scrollY;
-          const glow = document.querySelector('.fixed.top-0');
-          if(glow) {
-              glow.style.transform = `translate(-50%, ${scrolled * 0.1}px)`;
-              glow.style.opacity = Math.max(0, 0.03 - (scrolled * 0.00005));
-          }
-      });
-    </script>
-
-    <script>
-      (function() {
-          const mainSections = document.querySelectorAll('body > section:not(#terms-view):not(#privacy-view)');
-          const termsView = document.getElementById('terms-view');
-          const privacyView = document.getElementById('privacy-view');
-
-          function showView(view) {
-              if (view === 'home') {
-                  mainSections.forEach(s => s.classList.remove('hidden'));
-                  if(termsView) termsView.classList.add('hidden');
-                  if(privacyView) privacyView.classList.add('hidden');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-              } else if (view === 'terms') {
-                  mainSections.forEach(s => s.classList.add('hidden'));
-                  if(termsView) termsView.classList.remove('hidden');
-                  if(privacyView) privacyView.classList.add('hidden');
-                  window.scrollTo({ top: 0, behavior: 'instant' });
-              } else if (view === 'privacy') {
-                  mainSections.forEach(s => s.classList.add('hidden'));
-                  if(termsView) termsView.classList.add('hidden');
-                  if(privacyView) privacyView.classList.remove('hidden');
-                  window.scrollTo({ top: 0, behavior: 'instant' });
-              }
-          }
-
-          document.querySelectorAll('a').forEach(link => {
-              link.addEventListener('click', (e) => {
-                  const href = link.getAttribute('href');
-                  if (href === '/terms.html') {
-                      e.preventDefault();
-                      showView('terms');
-                  } else if (href === '/privacy.html') {
-                      e.preventDefault();
-                      showView('privacy');
-                  }
-              });
-          });
-
-          const brandLogo = document.querySelector('nav a.font-display');
-          if (brandLogo) {
-              brandLogo.addEventListener('click', (e) => {
-                  if(brandLogo.getAttribute('href') === '#') {
-                      showView('home');
-                  }
-              });
-          }
-      })();
-    </script>
-
-    <script>
-      (function () {
-        const form = document.getElementById('early-access-form');
-        if (!form) return;
-
-        const btn = document.getElementById('early-access-btn');
-        const emailInput = document.getElementById('early-access-email');
-        const feedback = document.getElementById('early-access-feedback');
-
-        form.addEventListener('submit', async function (e) {
-          e.preventDefault();
-
-          const email = emailInput.value.trim();
-          if (!email) return;
-
-          btn.disabled = true;
-          btn.textContent = 'Joining…';
-
-          try {
-            const res = await fetch('https://api.staticforms.dev/submit', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                accessKey: 'sf_c1a814836b4226a23c7a624c',
-                email: email,
-                subject: 'Early Access Request — Atrest',
-                honeypot: ''
-              })
-            });
-
-            const data = await res.json();
-
-            if (res.ok && data.success !== false) {
-              form.innerHTML = '<p class="text-sm font-light text-[#E2B97A]">You\'re on the list. We\'ll be in touch.</p>';
-            } else {
-              throw new Error(data.message || 'Submission failed');
-            }
-          } catch (err) {
-            feedback.textContent = 'Something went wrong. Please try again.';
-            feedback.className = 'mt-4 text-sm font-light text-center px-2 text-red-400';
-            feedback.classList.remove('hidden');
-            btn.disabled = false;
-            btn.textContent = 'Get Early Access';
-          }
-        });
-      })();
-    </script>
-
-</body></html>
+</body>
+</html>

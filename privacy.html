@@ -1,71 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — Atrest</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.7;
-            color: #1a1a1a;
-            background: #fafaf9;
-            padding: 2rem 1rem;
-        }
-        .container { max-width: 680px; margin: 0 auto; }
-        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
-        .updated { color: #666; font-size: 0.9rem; margin-bottom: 2.5rem; }
-        h2 { font-size: 1.1rem; font-weight: 600; margin: 2rem 0 0.5rem; }
-        p { margin-bottom: 1rem; }
-        ul { padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.4rem; }
-        a { color: #2c6e49; }
-        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Atrest</title>
+<meta name="description" content="What Atrest stores, where it stores it, and what leaves your device.">
+<style>
+  /* Palette shared with index.html — ART_DIRECTION_DECISIONS §5.3 / §5.4 */
+  :root {
+    --ink: #E9EEF4;
+    --ink-soft: #93A5B6;
+    --ink-faint: #64778A;
+    --paper: #070C15;
+    --surface: #0E1B2B;
+    --rule: rgba(143, 166, 184, 0.13);
+    --link: #FFC24A;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 300 17px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 3.25rem 1.5rem 5rem;
+  }
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(7, 12, 21, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav div {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 4.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .wordmark {
+    font-size: 0.9375rem;
+    letter-spacing: 0.22em;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  nav .back {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  nav .back:hover { color: var(--ink); }
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.35rem;
+  }
+  h2 {
+    font-size: 1.0625rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    margin: 2.75rem 0 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .updated {
+    color: var(--ink-soft);
+    font-size: 0.875rem;
+    margin: 0 0 2rem;
+  }
+  .lede {
+    font-size: 1.0625rem;
+    margin: 0 0 0.5rem;
+  }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.15rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-faint);
+    font-size: 0.875rem;
+  }
+  strong { font-weight: 400; color: var(--ink); }
+</style>
 </head>
 <body>
-<div class="container">
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: April 29, 2026</p>
+<nav>
+  <div>
+    <a class="wordmark" href="/">ATREST</a>
+    <a class="back" href="/">Back to the app</a>
+  </div>
+</nav>
 
-    <p>Atrest ("the app", "we", "us") is a fasting tracker for iPhone. This policy explains what data the app handles and how.</p>
+<main>
 
-    <h2>What data we collect</h2>
-    <p>We collect nothing. Atrest does not transmit any information off your device. There are no servers, no accounts, and no analytics.</p>
+  <h1>Privacy</h1>
+  <p class="updated">Last updated 23 August 2026</p>
 
-    <h2>What data stays on your device</h2>
-    <p>The following information is stored locally on your iPhone only:</p>
-    <ul>
-        <li>Fasting session records (start time, end time, target duration)</li>
-        <li>Water intake logs</li>
-        <li>App preferences and settings</li>
-        <li>Your purchase entitlement status (stored in the iOS Keychain on your device)</li>
-    </ul>
-    <p>This data never leaves your device unless you choose to export it yourself using the in-app export feature.</p>
+  <p class="lede">Atrest keeps everything you do in it on your phone. It has no accounts, no sign-in, no sync, and no analytics. It sends nothing anywhere, and there is no server for it to send anything to.</p>
 
-    <h2>Purchases</h2>
-    <p>In-app purchases (Annual Premium and Lifetime Access) are processed entirely by Apple via StoreKit. We do not see, store, or process any payment information. Apple's privacy policy governs that transaction. You can review it at <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>.</p>
+  <p>This page explains that in full, including the few places where something does involve someone other than you, because a privacy page that mentions only the good parts is not worth reading.</p>
 
-    <h2>Third-party services</h2>
-    <p>Atrest does not integrate any third-party analytics, advertising, crash reporting, or tracking SDKs.</p>
+  <h2>Who this is</h2>
 
-    <h2>Children's privacy</h2>
-    <p>The app does not knowingly collect any data from anyone, including children under 13. Since no data is collected at all, COPPA does not apply.</p>
+  <p>Atrest is made by Aravinthan Nair, an individual developer in Belgium. For anything on this page, write to <a href="mailto:arav@atrest.app">arav@atrest.app</a>. That address is the best way to reach me and it is read by me.</p>
 
-    <h2>Data export and deletion</h2>
-    <p>You can export all your fasting data at any time from the Settings screen. You can also permanently delete all local app data from Settings. Deleting the app from your device removes all locally stored data entirely.</p>
+  <h2>What the app stores, and where</h2>
 
-    <h2>Changes to this policy</h2>
-    <p>If this policy changes materially, we will update the date at the top of this page. Continued use of the app after changes constitutes acceptance.</p>
+  <p>Everything the app records is written to its own private storage on your device, in the area iOS reserves for the app. It includes:</p>
 
-    <h2>Contact</h2>
-    <p>Questions? Email us at <a href="mailto:arav@atrest.app">arav@atrest.app</a>.</p>
+  <ul>
+    <li>the date you chose to start from, and the days you have marked</li>
+    <li>anything you have written — the line about yourself, and your notes</li>
+    <li>voice notes you record, and their transcripts</li>
+    <li>the trees you have kept, stored as the small set of numbers needed to draw them again</li>
+    <li>your settings</li>
+  </ul>
 
-    <footer>
-        <p>Atrest &bull; <a href="/terms.html">Terms of Service</a></p>
-    </footer>
-</div>
+  <p>No other app can read any of it. I cannot read any of it. There is no copy of it anywhere else.</p>
+
+  <h2>Voice notes and the microphone</h2>
+
+  <p>If you record a voice note, the app asks for permission to use the microphone. The recording is saved as an audio file on your device and is played back from there.</p>
+
+  <p>If you ask for a transcript, the app uses Apple's speech recognition with on-device recognition required, so the audio is processed by your phone and not sent to Apple. On a device or language where your phone cannot do that locally, the app produces no transcript rather than sending the recording away instead. There is no fallback that goes over the network.</p>
+
+  <h2>What the app does not do</h2>
+
+  <ul>
+    <li>No account, no email address, no sign-in.</li>
+    <li>No analytics, no usage tracking, no advertising, no advertising identifier.</li>
+    <li>No crash or error reporting from inside the app.</li>
+    <li>No iCloud sync and no sync of any other kind.</li>
+    <li>No third-party code of any kind. The app is built entirely from Apple's own frameworks.</li>
+    <li>Nothing you write or record is read by software for keywords, sentiment, or anything else. Your notes are stored and shown back to you, and that is all that happens to them.</li>
+  </ul>
+
+  <p>The app makes no network requests at all. It has no code capable of making one.</p>
+
+  <h2>The four places someone else is involved</h2>
+
+  <p>These are the only ones, and none of them sends anything to me.</p>
+
+  <p><strong>Sharing a tree.</strong> When you share a tree, the app makes an image and hands it to iOS's share sheet. What happens next is between you and whichever app you choose to send it to. The image never passes through me.</p>
+
+  <p><strong>Opening this site.</strong> The links to this page and to the terms open your browser. Like every website, the service hosting these pages records the requests it receives, which includes your IP address. That is the website, not the app.</p>
+
+  <p><strong>Device backups.</strong> If you back your phone up to iCloud or to a computer, the app's data can be included in that backup, in line with your iOS settings. That is Apple's backup and it stays under your control.</p>
+
+  <p><strong>Emailing me.</strong> If you write to <a href="mailto:arav@atrest.app">arav@atrest.app</a>, then I have your email address and whatever you chose to tell me, held in an ordinary mailbox. I use it to answer you and for nothing else. Ask me to delete the exchange and I will.</p>
+
+  <h2>What Apple tells me</h2>
+
+  <p>Apple shows every developer aggregated App Store figures, such as how many people downloaded an app. If you have chosen in your iOS settings to share analytics with developers, Apple may also show me anonymised crash reports. This comes from Apple's own systems rather than from anything in the app, it is not connected to you, and it is not something I can turn off from my side. You can turn it off from yours, in Settings → Privacy &amp; Security → Analytics &amp; Improvements.</p>
+
+  <h2>Deleting everything</h2>
+
+  <p>Delete the app and iOS removes its storage with it — every note, every recording, every tree, all of it. There is no copy held anywhere else, so nothing survives that step.</p>
+
+  <h2>Your rights</h2>
+
+  <p>Under the GDPR you have rights to see, correct, export and delete personal data held about you. In this case the honest answer is that I hold none: the data is on your device, in your possession, and I have no route to it. There is nothing for me to send you or delete, and no request you need to make in order to get at it.</p>
+
+  <p>The one exception is email you send me, which I do hold. Write to me about that and I will act on it.</p>
+
+  <p>If you think I have handled something badly, tell me first. You can also complain to the Belgian Data Protection Authority at <a href="https://www.dataprotectionauthority.be/">dataprotectionauthority.be</a>.</p>
+
+  <h2>Age</h2>
+
+  <p>Atrest is rated 18+ on the App Store. There is no age check in the app, because there is no sign-up and nothing is collected — there is nothing to check an age against, and nothing is collected from anyone, of any age.</p>
+
+  <h2>Changes to this page</h2>
+
+  <p>If a future version of the app changes what is stored or where it goes, this page changes with it, and the date at the top moves. I will not quietly widen what the app does and leave this page as it was.</p>
+
+  <footer>
+    Atrest · Aravinthan Nair, Belgium · <a href="mailto:arav@atrest.app">arav@atrest.app</a> · <a href="/terms.html">Terms</a>
+  </footer>
+
+</main>
 </body>
 </html>
