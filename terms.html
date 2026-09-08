@@ -1,72 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service — Atrest Intermittent Fasting</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.7;
-            color: #1a1a1a;
-            background: #fafaf9;
-            padding: 2rem 1rem;
-        }
-        .container { max-width: 680px; margin: 0 auto; }
-        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
-        .updated { color: #666; font-size: 0.9rem; margin-bottom: 2.5rem; }
-        h2 { font-size: 1.1rem; font-weight: 600; margin: 2rem 0 0.5rem; }
-        p { margin-bottom: 1rem; }
-        ul { padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.4rem; }
-        a { color: #2c6e49; }
-        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms — Atrest Vaping</title>
+<meta name="description" content="The terms for using Atrest, and what the app is and is not.">
+<style>
+  /* Palette shared with index.html — ART_DIRECTION_DECISIONS §5.3 / §5.4 */
+  :root {
+    --ink: #E9EEF4;
+    --ink-soft: #93A5B6;
+    --ink-faint: #64778A;
+    --paper: #070C15;
+    --surface: #0E1B2B;
+    --rule: rgba(143, 166, 184, 0.13);
+    --link: #FFC24A;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 300 17px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 3.25rem 1.5rem 5rem;
+  }
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(7, 12, 21, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav div {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 4.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .wordmark {
+    font-size: 0.9375rem;
+    letter-spacing: 0.22em;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  nav .back {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  nav .back:hover { color: var(--ink); }
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.35rem;
+  }
+  h2 {
+    font-size: 1.0625rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    margin: 2.75rem 0 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .updated {
+    color: var(--ink-soft);
+    font-size: 0.875rem;
+    margin: 0 0 2rem;
+  }
+  .lede { font-size: 1.0625rem; margin: 0 0 0.5rem; }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.15rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-faint);
+    font-size: 0.875rem;
+  }
+  strong { font-weight: 400; color: var(--ink); }
+</style>
 </head>
 <body>
-<div class="container">
-    <h1>Terms of Service — Atrest Intermittent Fasting</h1>
-    <p class="updated">Last updated: August 25, 2026</p>
+<nav>
+  <div>
+    <a class="wordmark" href="/">ATREST</a>
+    <a class="back" href="/">Back to the app</a>
+  </div>
+</nav>
 
-    <p>These terms govern your use of the Atrest iOS application ("the app"). By downloading or using the app, you agree to these terms.</p>
+<main>
 
-    <h2>Use of the app</h2>
-    <p>Atrest is a personal fasting tracker. You may use it for personal, non-commercial purposes. You may not reverse-engineer, decompile, copy, or redistribute any part of the app.</p>
+  <h1>Terms — Atrest Vaping</h1>
+  <p class="updated">Last updated 25 August 2026</p>
 
-    <h2>Not medical advice</h2>
-    <p>Atrest is a personal productivity and tracking tool, not a medical application. Nothing in the app constitutes medical advice, diagnosis, or treatment. Fasting may not be appropriate for everyone. Always consult a qualified healthcare provider before beginning any fasting regimen, particularly if you have a medical condition, are pregnant, or take medication.</p>
+  <p class="lede">Atrest is made by Aravinthan Nair, an individual developer in Belgium. This page sets out what the app is, what it is not, and what you can expect from it.</p>
 
-    <h2>In-app purchases</h2>
-    <p>The app offers two premium options:</p>
-    <ul>
-        <li><strong>Annual Premium</strong> — an auto-renewable subscription billed yearly. You may cancel at any time through your Apple ID account settings. Cancellation takes effect at the end of the current billing period.</li>
-        <li><strong>Lifetime Access</strong> — a one-time, non-consumable purchase. This grants permanent access to all premium features with no recurring charges.</li>
-    </ul>
-    <p>All purchases are processed by Apple. Refunds are governed by Apple's refund policies. We do not process payments directly and cannot issue refunds independently. Family Sharing is enabled for both products where supported.</p>
+  <h2>Your licence to use the app</h2>
 
-    <h2>Your data</h2>
-    <p>All fasting and health-related data you enter is stored locally on your device. You can export or delete your data at any time from within the app. Deleting the app removes all locally stored data. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+  <p>Atrest is distributed through the App Store, and your licence to use it is Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Licensed Application End User License Agreement</a>. That agreement governs. This page does not replace it and is not a separate licence — it is here to say plainly what the standard agreement does not cover.</p>
 
-    <h2>Disclaimer of warranties</h2>
-    <p>The app is provided "as is" without warranties of any kind. We do not warrant that the app will be uninterrupted, error-free, or free from loss of data. Your use of the app is at your own risk.</p>
+  <h2>This is not medical advice</h2>
 
-    <h2>Limitation of liability</h2>
-    <p>To the fullest extent permitted by applicable law, we are not liable for any indirect, incidental, special, or consequential damages arising from your use of the app, including any health outcomes resulting from fasting practices.</p>
+  <p>Atrest is not a medical device and it is not treatment. It does not diagnose anything, it does not know anything about your health, and nothing in it should be taken as advice from a clinician. What it offers is somewhere to put a craving and a record of your own days, kept by you.</p>
 
-    <h2>Changes to these terms</h2>
-    <p>We may update these terms from time to time. Material changes will be reflected by an updated date at the top of this page. Continued use of the app after changes constitutes acceptance of the updated terms.</p>
+  <p>Nicotine dependence is a medical matter and there is real help for it. A doctor or pharmacist can talk to you about what is available. In Belgium, Tabacstop is free, anonymous and staffed by specialists on <a href="tel:080011100">0800 111 00</a>. Elsewhere, your national quit line will do the same. If you are in danger or in a medical emergency, call your local emergency number.</p>
 
-    <h2>Governing law</h2>
-    <p>These terms are governed by applicable law in the jurisdiction where the developer is located. Any disputes shall be resolved in the courts of that jurisdiction.</p>
+  <p>Please do not stop, start or change any medication because of something in this app.</p>
 
-    <h2>Contact</h2>
-    <p>Questions about these terms? Email us at <a href="mailto:arav@atrest.app">arav@atrest.app</a>.</p>
+  <h2>What it costs</h2>
 
-    <footer>
-        <p>Atrest &bull; <a href="privacy.html">Privacy Policy</a></p>
-    </footer>
-</div>
+  <p>This version is free. There is nothing to buy inside it, no subscription, and no part of it held back behind a payment. If that changes in a future version, it will be visible before you get there, and it will not take away anything you already have.</p>
+
+  <h2>Your content is yours</h2>
+
+  <p>Everything you write, record and keep in the app belongs to you. It stays on your device. I claim no rights over it, I have no way to reach it, and I could not use it even if I wanted to. See the <a href="privacy.html">privacy page</a> for the detail.</p>
+
+  <h2>What I can and cannot promise</h2>
+
+  <p>I build this carefully and I test it. I cannot promise it will work perfectly on every device, or that a future release of iOS will not break something, or that data on your phone cannot be lost — phones are lost, replaced and reset, and the app holds no copy anywhere else. Keep a backup if what you have written matters to you.</p>
+
+  <p>Beyond that, the app is provided as it is, and my liability is limited as far as the law allows. Nothing on this page reduces the rights you have as a consumer under Belgian or EU law, which apply whatever this page says.</p>
+
+  <h2>Using it sensibly</h2>
+
+  <p>Do not use the app to break the law, and do not try to pull it apart or work around how it is built beyond what the law expressly permits. There is no service to disrupt, no account to abuse and no one else's data in it, so there is not much else to ask of you.</p>
+
+  <h2 id="age">Age</h2>
+
+  <p>The App Store rates Atrest 18+.</p>
+
+  <p>That rating is about subject matter. Apple's questionnaire asks how often an app refers to tobacco, alcohol or drug use, and for an app about quitting vaping the honest answer is "frequently" — which produces an 18+ rating whatever the reason for the references. The established quit-smoking apps carry the same rating for the same reason.</p>
+
+  <p>Atrest does not show vaping or smoking, does not depict any nicotine product, and does not encourage anyone to use one. It exists to help people stop. I have not sought a lower rating than the questionnaire produced.</p>
+
+  <h2>Changes, and stopping</h2>
+
+  <p>The app will change as it is worked on, and this page changes with it, with the date at the top moved. You can stop at any time by deleting the app, which takes its data with it.</p>
+
+  <h2>Law</h2>
+
+  <p>Belgian law applies. If you are a consumer in the EU, you keep the protection of the law of the country you live in and can bring proceedings before its courts.</p>
+
+  <h2>Contact</h2>
+
+  <p>Questions, complaints and anything else: <a href="mailto:arav@atrest.app">arav@atrest.app</a>.</p>
+
+  <footer>
+    Atrest · Aravinthan Nair, Belgium · <a href="mailto:arav@atrest.app">arav@atrest.app</a> · <a href="privacy.html">Privacy</a>
+  </footer>
+
+</main>
 </body>
 </html>
