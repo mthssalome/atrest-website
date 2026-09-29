@@ -1,0 +1,7 @@
+# Security contact for atrest.app
+# https://www.rfc-editor.org/rfc/rfc9116
+
+Contact: mailto:arav@atrest.app
+Expires: 2027-09-29T00:00:00.000Z
+Preferred-Languages: en, fr, nl
+Canonical: https://atrest.app/.well-known/security.txt
