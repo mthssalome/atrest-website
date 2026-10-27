@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy — Atrest Vaping</title>
+<title>Privacy — Atrest Recovery: Quit Vaping</title>
 <meta name="description" content="What Atrest stores, where it stores it, and what leaves your device.">
 <style>
   /* Palette shared with index.html — ART_DIRECTION_DECISIONS §5.3 / §5.4 */
@@ -109,8 +109,8 @@
 
 <main>
 
-  <h1>Privacy — Atrest Vaping</h1>
-  <p class="updated">Last updated 29 September 2026</p>
+  <h1>Privacy — Atrest Recovery: Quit Vaping</h1>
+  <p class="updated">Last updated 27 October 2026</p>
 
   <p class="lede">Atrest keeps everything you do in it on your phone. It has no accounts, no sign-in, no sync, and no analytics. It sends nothing anywhere, and there is no server for it to send anything to.</p>
 
@@ -122,12 +122,12 @@
 
   <h2>What the app stores, and where</h2>
 
-  <p>Everything the app records is written to its own private storage on your device, in the area iOS reserves for the app. It includes:</p>
+  <p>Everything the app records is written to the app's private storage on your phone. It includes:</p>
 
   <ul>
     <li>the date you chose to start from, and the days you have marked</li>
     <li>anything you have written — the line about yourself, and your notes</li>
-    <li>voice notes you record, and their transcripts</li>
+    <li>voice notes you record, and, on iPhone, their transcripts</li>
     <li>the trees you have kept, stored as the small set of numbers needed to draw them again</li>
     <li>your settings</li>
   </ul>
@@ -138,7 +138,7 @@
 
   <p>If you record a voice note, the app asks for permission to use the microphone. The recording is saved as an audio file on your device and is played back from there.</p>
 
-  <p>If you ask for a transcript, the app uses Apple's speech recognition with on-device recognition required, so the audio is processed by your phone and not sent to Apple. On a device or language where your phone cannot do that locally, the app produces no transcript rather than sending the recording away instead. There is no fallback that goes over the network.</p>
+  <p>On iPhone, if you ask for a transcript, the app uses Apple's speech recognition with on-device recognition required, so the audio is processed by your phone and not sent to Apple. On a device or language where your phone cannot do that locally, the app produces no transcript rather than sending the recording away instead. There is no fallback that goes over the network.</p>
 
   <h2>What the app does not do</h2>
 
@@ -147,27 +147,29 @@
     <li>No analytics, no usage tracking, no advertising, no advertising identifier.</li>
     <li>No crash or error reporting from inside the app.</li>
     <li>No iCloud sync and no sync of any other kind.</li>
-    <li>No third-party code of any kind. The app is built entirely from Apple's own frameworks.</li>
+    <li>No third-party code of any kind. The app is built from Apple's and Google's own standard tools, with no tracking or advertising code.</li>
     <li>Nothing you write or record is read by software for keywords, sentiment, or anything else. Your notes are stored and shown back to you, and that is all that happens to them.</li>
   </ul>
 
-  <p>The app makes no network requests at all. It has no code capable of making one.</p>
+  <p>The app makes no network requests. On Android, it does not have permission to connect to the internet.</p>
 
   <h2>The four places someone else is involved</h2>
 
   <p>These are the only ones, and none of them sends anything to me.</p>
 
-  <p><strong>Sharing a tree.</strong> When you share a tree, the app makes an image and hands it to iOS's share sheet. What happens next is between you and whichever app you choose to send it to. The image never passes through me.</p>
+  <p><strong>Sharing a tree.</strong> On iPhone, when you share a tree, the app makes an image and hands it to iOS's share sheet. What happens next is between you and whichever app you choose to send it to. The image never passes through me.</p>
 
   <p><strong>Opening this site.</strong> The links to this page and to the terms open your browser. Like every website, the service hosting these pages records the requests it receives, which includes your IP address. That is the website, not the app.</p>
 
-  <p><strong>Device backups.</strong> If you back your phone up to iCloud or to a computer, the app's data can be included in that backup, in line with your iOS settings. That is Apple's backup and it stays under your control.</p>
+  <p><strong>Device backups.</strong> On iPhone, if you back your phone up to iCloud or to a computer, the app's data can be included in that backup, in line with your iOS settings. That is Apple's backup and it stays under your control. On Android, Google's cloud backup is switched off for this app, so the app's data is not included there. Phone-to-phone transfer is on, so when you set up a new phone it can copy your data across.</p>
 
   <p><strong>Emailing me.</strong> If you write to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#114;&#97;&#118;&#64;&#97;&#116;&#114;&#101;&#115;&#116;&#46;&#97;&#112;&#112;">&#97;&#114;&#97;&#118;&#64;&#97;&#116;&#114;&#101;&#115;&#116;&#46;&#97;&#112;&#112;</a>, then I have your email address and whatever you chose to tell me, held in an ordinary mailbox. I use it to answer you and for nothing else. Ask me to delete the exchange and I will.</p>
 
-  <h2>What Apple tells me</h2>
+  <h2>What Apple and Google tell me</h2>
 
   <p>Apple shows every developer aggregated App Store figures, such as how many people downloaded an app. If you have chosen in your iOS settings to share analytics with developers, Apple may also show me anonymised crash reports. This comes from Apple's own systems rather than from anything in the app, it is not connected to you, and it is not something I can turn off from my side. You can turn it off from yours, in Settings → Privacy &amp; Security → Analytics &amp; Improvements.</p>
+
+  <p>Google shows me the same kind of thing in the Play Console: aggregated figures such as how many people downloaded the app, and, if you have allowed it, anonymised crash reports. As with Apple, this comes from Google's own systems rather than from anything in the app, it is not connected to you, and it is not something I can turn off from my side.</p>
 
   <h2>Deleting everything</h2>
 
@@ -177,13 +179,15 @@
 
   <p>Under the GDPR you have rights to see, correct, export and delete personal data held about you. In this case the honest answer is that I hold none: the data is on your device, in your possession, and I have no route to it. There is nothing for me to send you or delete, and no request you need to make in order to get at it.</p>
 
+  <p>On Android, the app can also save a copy of everything to a folder you choose. The copy goes where you put it and nowhere else.</p>
+
   <p>The one exception is email you send me, which I do hold. Write to me about that and I will act on it.</p>
 
   <p>If you think I have handled something badly, tell me first. You can also complain to the Belgian Data Protection Authority at <a href="https://www.dataprotectionauthority.be/">dataprotectionauthority.be</a>.</p>
 
   <h2>Age</h2>
 
-  <p>Atrest is rated 18+ on the App Store. There is no age check in the app, because there is no sign-up and nothing is collected — there is nothing to check an age against, and nothing is collected from anyone, of any age.</p>
+  <p>Atrest is rated 18+ on both stores. There is no age check in the app, because there is no sign-up and nothing is collected — there is nothing to check an age against, and nothing is collected from anyone, of any age.</p>
 
   <h2>Changes to this page</h2>
 
